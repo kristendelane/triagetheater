@@ -681,6 +681,40 @@ const storyData: StoryData = {
     ],
   },
   
+  befriend_neighbor: {
+    id: 'befriend_neighbor',
+    text: [
+      "You turn to the elderly woman sitting next to you. She's been waiting even longer than you have, clutching a plastic bag of medications.",
+      "'Been here long?' you ask, your voice hoarse from disuse.",
+      "She looks surprised that someone is speaking to her, then smiles wearily. 'Since 6 this morning. My heart's acting up again.'",
+      "For the next hour, you and Gladys (as you learn is her name) swap hospital horror stories. She tells you about the time she was sent home with pneumonia. You tell her about the doctor who thought your pancreas pain was anxiety.",
+      "When a nurse finally calls her name, Gladys squeezes your hand. 'You hang in there, honey. And if they try to send you home, you raise hell.'",
+      "The unlikely friendship makes the waiting slightly more bearable. You're still in pain, still being ignored, but at least you're not alone in the experience."
+    ],
+    choices: [
+      { text: 'Continue waiting, slightly comforted.', nextId: 'waiting_game' },
+      { text: 'Ask the front desk about your wait time.', nextId: 'charge_nurse' },
+    ],
+  },
+
+  charge_nurse: {
+    id: 'charge_nurse',
+    text: [
+      "Bolstered by your conversation with Gladys, you approach the front desk. The receptionist is typing rapidly, not looking up as you stand there waiting to be acknowledged.",
+      "You clear your throat. 'Excuse me, I've been waiting for over four hours. Could you tell me how much longer it might be?'",
+      "The receptionist glances up briefly. 'We triage based on medical necessity, not arrival time.'",
+      "Something in you snaps. 'I understand that, but I'm in significant pain, and I'd like to speak with the charge nurse about my situation.'",
+      "The magic words: 'charge nurse.' The receptionist's demeanor shifts slightly. 'I'll see if she's available.'",
+      "Ten minutes later, a tired-looking woman in navy scrubs approaches. 'I'm the charge nurse. What seems to be the problem?'",
+      "You explain your symptoms and the wait time. She listens, nodding occasionally, then checks something on a computer.",
+      "'Let me see what I can do,' she says, and for the first time, you feel like someone might actually be trying to help."
+    ],
+    choices: [
+      { text: 'Thank her and wait more hopefully.', nextId: 'waiting_game' },
+      { text: 'Ask about getting at least some pain relief while waiting.', nextId: 'demand_pain_relief' },
+    ],
+  },
+  
   talk_to_doctor: {
     id: 'talk_to_doctor',
     text: [
