@@ -784,6 +784,52 @@ const storyData: StoryData = {
     ],
   },
   
+  press_hygiene_issue: {
+    id: 'press_hygiene_issue',
+    text: [
+      "'I understand you're busy, but I've been sitting in my own vomit for hours. Could I please have a clean gown?' Your voice is polite but firm.",
+      "The nurse and security guard exchange glances. There's a long, awkward pause.",
+      "'I'll see what I can do,' the nurse finally says, disappearing through double doors.",
+      "Ten minutes later, she returns with a clean gown. It's paper-thin and has a tear along one side, but it's clean.",
+      "'The bathroom's still out of soap,' you mention as she hands it to you.",
+      "'Housekeeping has been notified,' she says without making eye contact. 'You can change in the bathroom. Leave the soiled gown in the bin.'"
+    ],
+    choices: [
+      { text: 'Thank her and change.', nextId: 'small_victory' },
+      { text: 'Push for more: Ask about soap again.', nextId: 'push_too_far' },
+    ],
+  },
+  
+  small_victory: {
+    id: 'small_victory',
+    text: [
+      "You change into the clean gown, feeling marginally more human despite the persistent pain and nausea.",
+      "It's a small victory, but in this environment, you'll take what you can get.",
+      "You return to your spot in the waiting area. Other patients look at you with a mix of envy and respect. One gives you a subtle thumbs up.",
+      "The wait continues, but at least you're not sitting in your own bodily fluids anymore.",
+      "An hour later, your name is finally called."
+    ],
+    choices: [
+      { text: 'Finally get some actual medical attention.', nextId: 'glimmer_of_hope' },
+    ],
+  },
+  
+  push_too_far: {
+    id: 'push_too_far',
+    text: [
+      "'What about the soap situation?' you ask as the nurse turns to leave. 'How am I supposed to properly clean up without soap?'",
+      "Her expression hardens. 'Like I said, housekeeping has been notified.'",
+      "'But—'",
+      "'Ma'am, we have multiple traumas coming in. I need you to change quickly and return to the waiting area.'",
+      "You realize you've pushed too far. The temporary goodwill you'd earned evaporates.",
+      "You change into the clean gown, but when you return, you notice your name has mysteriously moved further down the electronic waiting list."
+    ],
+    choices: [
+      { text: 'Accept defeat and keep waiting.', nextId: 'waiting_game' },
+      { text: 'GO NUCLEAR: This is the last straw.', nextId: 'nuclear_mode' },
+    ],
+  },
+  
   nuclear_infection: {
     id: 'nuclear_infection',
     text: [
@@ -1033,43 +1079,6 @@ const storyData: StoryData = {
       { text: 'Proceed with proper medical assessment.', nextId: 'glimmer_of_hope' },
     ],
   },
-
-  // Add the missing befriend_neighbor scene
-  befriend_neighbor: {
-    id: 'befriend_neighbor',
-    text: [
-      "You turn to the elderly woman sitting next to you. She's been waiting even longer than you have, clutching a plastic bag of medications.",
-      "'Been here long?' you ask, your voice hoarse from disuse.",
-      "She looks surprised that someone is speaking to her, then smiles wearily. 'Since 6 this morning. My heart's acting up again.'",
-      "For the next hour, you and Gladys (as you learn is her name) swap hospital horror stories. She tells you about the time she was sent home with pneumonia. You tell her about the doctor who thought your pancreas pain was anxiety.",
-      "When a nurse finally calls her name, Gladys squeezes your hand. 'You hang in there, honey. And if they try to send you home, you raise hell.'",
-      "The unlikely friendship makes the waiting slightly more bearable. You're still in pain, still being ignored, but at least you're not alone in the experience."
-    ],
-    choices: [
-      { text: 'Continue waiting, slightly comforted.', nextId: 'waiting_game' },
-      { text: 'Ask the front desk about your wait time.', nextId: 'charge_nurse' },
-    ],
-  },
-
-  // Add the missing charge_nurse scene
-  charge_nurse: {
-    id: 'charge_nurse',
-    text: [
-      "Bolstered by your conversation with Gladys, you approach the front desk. The receptionist is typing rapidly, not looking up as you stand there waiting to be acknowledged.",
-      "You clear your throat. 'Excuse me, I've been waiting for over four hours. Could you tell me how much longer it might be?'",
-      "The receptionist glances up briefly. 'We triage based on medical necessity, not arrival time.'",
-      "Something in you snaps. 'I understand that, but I'm in significant pain, and I'd like to speak with the charge nurse about my situation.'",
-      "The magic words: 'charge nurse.' The receptionist's demeanor shifts slightly. 'I'll see if she's available.'",
-      "Ten minutes later, a tired-looking woman in navy scrubs approaches. 'I'm the charge nurse. What seems to be the problem?'",
-      "You explain your symptoms and the wait time. She listens, nodding occasionally, then checks something on a computer.",
-      "'Let me see what I can do,' she says, and for the first time, you feel like someone might actually be trying to help."
-    ],
-    choices: [
-      { text: 'Thank her and wait more hopefully.', nextId: 'waiting_game' },
-      { text: 'Ask about getting at least some pain relief while waiting.', nextId: 'demand_pain_relief' },
-    ],
-  },
-
 };
 // --------------------
 
