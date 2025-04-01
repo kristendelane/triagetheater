@@ -1070,7 +1070,7 @@ const storyData: StoryData = {
     id: 'gracious_victory',
     text: [
       "You decide to accept the victory with dignity, rather than pushing your advantage further.",
-      "'Thank you,' you say simply. 'I just want to be taken seriously.'",
+      "'Thank you,' you say simply. 'I just want to be taken seriously. I'm tired of being treated like a drug addict every time I walk into a hospital.'",
       "The tone shifts. There's a hint of genuine remorse from the staff as they escort you to an actual treatment room. Your vitals are taken properly. Someone offers you a warm blanket.",
       "A doctor appears with surprising speed, actually listening as you explain your symptoms. Tests are ordered. Pain medication is discussed without skepticism.",
       "You wonder about all the patients still waiting who don't have the leverage of viral fame. But for now, you focus on your own care, finally receiving the attention you've desperately needed."
