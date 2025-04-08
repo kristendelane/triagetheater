@@ -6,9 +6,28 @@ import storyData from './AdventureGame.json';
 export default function AdventureGame() {
   const [currentSceneId, setCurrentSceneId] = useState('start');
   const [isClient, setIsClient] = useState(false);
+  const [questId, setQuestId] = useState(null);
 
   useEffect(() => {
     setIsClient(true);
+    
+    // Check if there's a quest ID in the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('quest');
+    
+    if (id) {
+      setQuestId(id);
+      // You could fetch quest data here if needed
+      fetch(`/api/quest?id=${id}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log('Quest data:', data);
+          // Handle quest data as needed
+        })
+        .catch(error => {
+          console.error('Error fetching quest:', error);
+        });
+    }
   }, []);
 
   const currentScene = storyData[currentSceneId];
@@ -46,7 +65,10 @@ export default function AdventureGame() {
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md mt-10 border border-gray-200">
       <h1 className="text-3xl font-bold mb-2 text-gray-800">Hellcare</h1>
-      <h2 className="text-xl font-medium mb-6 text-gray-600 border-b pb-2">Story 1: Welcome to the ER: Please Take a Number</h2>
+      <h2 className="text-xl font-medium mb-6 text-gray-600 border-b pb-2">
+        Story 1: Welcome to the ER: Please Take a Number
+        {questId && <span className="text-sm text-gray-500 ml-2">(Quest ID: {questId})</span>}
+      </h2>
       <div className="text-gray-800 text-lg leading-relaxed mb-8">
         {renderText(currentScene.text)}
       </div>
