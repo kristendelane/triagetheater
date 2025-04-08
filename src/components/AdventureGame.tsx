@@ -1,40 +1,46 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
+// A fixed version without duplicated scenes
+import { useState } from 'react';
 
-// Define the structure for a choice
 interface Choice {
   text: string;
   nextId: string;
   description?: string;
 }
 
-// Define the structure for a scene
-interface Scene {
+interface GameScene {
   id: string;
-  text: string | string[]; // Allow multiple paragraphs
+  text: string | string[];
   choices?: Choice[];
-  isEnding?: boolean; // Optional flag for ending scenes
-  imageUrl?: string; // Optional image
-  tiktokEmbed?: string; // Optional TikTok embed code or link placeholder (currently just displays text)
+  tiktokEmbed?: string;
+  isEnding?: boolean;
+  resources?: Array<{
+    title: string;
+    url?: string;
+    items?: string[];
+  }>;
+  navigation?: Array<{
+    text: string;
+    nextId: string;
+  }>;
 }
 
-// Define the main story data structure
-type StoryData = Record<string, Scene>;
-
-// --- STORY DATA ---
-const storyData: StoryData = {
+// The main story data structure
+const storyData: Record<string, GameScene> = {
   start: {
     id: 'start',
     text: [
+      "🧨 Scene: Welcome to the ER — Please Take a Number",
       "It didn't start with an ambulance. It started with a year of gaslighting.",
       "You were a good patient. You went to every appointment, even when you had to leave work early, bike two hours with your stomach in knots, or beg friends for rides. You tolerated it all — the rotating cast of medical residents who never read your chart, the endless loop of 'eat more fiber,' 'take Miralax,' 'do yoga,' and the cherry on top: 'Are you here for drugs?'",
-      "You told them, every time: 'I'm not constipated. I'm an ultramarathon runner. I eat like a vegan wellness influencer. I take everything you prescribe. And I'm still in agony.'",
+      "You told them, every time: 'This is NOT a case of IBS. I'm an ultramarathon runner. I eat like a vegan wellness influencer. I've taken everything you've prescribe - multiple times - as written. And I'm still in agony.'",
       "They nodded sympathetically and prescribed a different flavor of useless.",
       "You worked at a 3D printing company, finally with decent insurance. Stanford Hospital was twenty minutes away. The GI clinic was walking distance from your job. You thought that meant something.",
       "It didn't.",
       "Stanford gave you the same shrugs and suspicion that Medi-Cal did — just with nicer furniture.",
       "After months of vomiting, bloating so severe none of your clothes fit, and appointments that went nowhere, you stopped hoping. You started surviving. You stayed late in the lab to make up for time lost to vomiting in your car or sprinting to the bathroom mid-client meeting. You popped antiemetics like mints — which you'd been on since middle school, by the way, because this didn't start last year. This started decades ago. No one ever took it seriously.",
+      "Rather than sympathy and help, fighting the urge not to throw up in the middle of meetings (and often failing) earned you the label of 'unreliable employee'. It's not long before your b*tch of a boss puts you on an extensive PIP for <gasp!> fighting a serious and life-threatening chronic illness.",
       "Then came the night everything broke.",
       "You wake up feeling like a team of ninjas has been stabbing you in the belly all night. The pain is relentless — twisting, bloating, pulsing — and you can't tell if it's your intestines or a demon.",
       "But the pain — the pressure — it felt like you'd swallowed a basketball.",
@@ -43,65 +49,83 @@ const storyData: StoryData = {
       "The paramedics arrived. Professionals, supposedly.",
       "Your partner has to spend twenty minutes convincing them that you're not nine months pregnant and in labor. The bloating is so extreme you look like you've swallowed a basketball. Your skin is stretched tight — so tight you're surprised you don't burst into stretch marks.",
       "They try and fail to find a vein. Eventually, they give up and jab you with an intramuscular injection of fentanyl. It hits bone. You scream. The bruising is immediate spreads like a Rorschach test. You wouldn't be able to lift your arm for weeks.",
-      "And finally — finally — they brought you to the ER. Where you learned that the trauma of being believed isn't actually better than the trauma of being ignored.",
+      "And finally — finally — you arrive at the ER. Where you learned that the trauma of being believed isn't actually better than the trauma of being ignored.",
       "Welcome to the ER. Please take a number. And maybe a vomit bag."
     ],
     choices: [
-      { text: 'Continue to the ER in the ambulance.', nextId: 'er_arrival_expanded' },
-      { text: 'Escape the ambulance and go back home.', nextId: 'escape_ambulance' },
+      { text: '🚑 Continue to the ER in the ambulance', nextId: 'er_arrival_expanded' },
+      { text: '🛑 Escape the ambulance and go back home', nextId: 'escape_ambulance' }
     ],
+    resources: [
+      {
+        title: "Understanding Medical Gaslighting",
+        url: "https://www.healthline.com/health/medical-gaslighting"
+      },
+      {
+        title: "Chronic Illness and Medical Trauma",
+        url: "https://www.psychologytoday.com/us/blog/the-truth-about-exercise-addiction/201808/chronic-illness-and-medical-trauma"
+      },
+      {
+        title: "Patient Advocacy Resources",
+        items: [
+          "How to Document Your Symptoms Effectively",
+          "Questions to Ask Your Healthcare Provider",
+          "Understanding Your Rights as a Patient"
+        ]
+      }
+    ],
+    navigation: [
+      { text: '🔁 Start this story over from the beginning', nextId: 'start' },
+      { text: '🏠 Return to Main Menu to pick a different storyline', nextId: 'main_menu' }
+    ]
   },
   
+  // And all other scenes...
+
   escape_ambulance: {
     id: 'escape_ambulance',
     text: [
-      "🧨 Scene: The Great Ambulance Escape",
+      "🛑 Scene: The Great Ambulance Escape",
       "You are, technically speaking, lying in an ambulance. But only barely. The moment you're loaded up, things go sideways.",
-      "The EMTs are arguing over your chart—or lack thereof—saying things like 'chronic pain patient' in that tone that's practically a slur, and you catch the glint of a Benadryl-and-Ativan combo being prepped like you're a nuisance to be sedated, not a patient to be helped.",
-      "Then it happens. The older paramedic, who hasn't made eye contact with you once, mutters:",
-      "'This might be behavioral. I mean, there's no trauma.'",
-      "You snap.",
+      "Your partner and the paramedics are engaged in what can only be described as a medical debate club meeting about whether you're pregnant with twins. 'She's just bloated!' your partner insists, while the paramedics exchange knowing glances that say 'Ah yes, the classic \"just bloated\" cover story.'",
+      "Meanwhile, they're trying to find a vein. Spoiler alert: they can't. After what feels like an eternity of poking and prodding, one of them sighs and pulls out a syringe. 'We'll have to go intramuscular,' they say, as if this is a perfectly normal thing to say to someone who is already in the worst pain of their life.",
+      "The fentanyl hits bone. You scream. Not a polite 'ouch' scream, but the kind of scream that makes small children cry and dogs howl in sympathy. The bruising spreads like a Rorschach test of suffering, and you're pretty sure you'll never be able to lift your arm again.",
+      "That's when you realize: if this is how they treat you in the ambulance, the ER is going to be a whole new level of hell. You make a decision.",
       "'I'm not going. Stop the ambulance. I want out.'",
-      "There's a pause. Then a sigh. The ambulance pulls into a gas station. You're told you'll need to sign an Against Medical Advice (AMA) form before they can legally let you out. You scribble something between a middle finger and a squiggle and immediately regret it—but not as much as you're about to regret everything else.",
-      "They unload you and leave you curled like a shrimp on the cold curb outside the convenience store. You can't walk. You're in too much pain to even sit upright. A stray soda can rolls toward your shoe, taps it gently, and continues its journey with more dignity than you currently possess.",
-      "You open your phone with trembling hands. And now comes the worst part: asking for help.",
-      "",
-      "📚 Resources:",
-      "• Refusing Ambulance Transport: What You Need to Know",
-      "• Sick Together: Coping When Both Partners Have Chronic Illness",
-      "",
-      "💡 Sample scripts for next time:",
-      "• 'I need a medically safe way to get to the ER, but I can't tolerate the ambulance ride. Can we pause and problem-solve together?'",
-      "• 'Please document my refusal was due to feeling unsafe, not that I don't need emergency care.'"
+      "There's a pause. Then a sigh. You're told you'll need to sign an Against Medical Advice (AMA) form before they can legally let you out. You scribble something between a middle finger and a squiggle and immediately regret it—but not as much as you're about to regret everything else.",
+      "They unload you and leave you curled like a shrimp on the cold curb outside your apartment building. You can't walk. You're in too much pain to even sit upright. A stray soda can rolls toward your shoe, taps it gently, and continues its journey with more dignity than you currently possess.",
+      "The paramedics drive off, probably to argue with someone else about whether they're pregnant with triplets or just really into burritos."
     ],
     choices: [
-      { 
-        text: '🚕 Call an Uber', 
-        nextId: 'uber_ride',
-        description: "You brace yourself for the Everest-level challenge of getting into a car with roiling upper gastric pain, nausea, and the spinal flexibility of a mannequin. But worse—far worse—is the quiet heartbreak of watching your partner, who can barely walk or sit, force himself into his own car to trail you. He can't ride in an Uber; the seats are wrong, the angles are wrong, the world is wrong. His own car is tricked out with ergonomic cushions, special mirrors, and the faint scent of medicinal despair. He'll follow you to the hospital. He'll sit in the parking lot with a heat pad, probably crying silently, and you'll pretend you don't notice. But tomorrow—or next week, or forever—he'll be down with a new flare. Maybe in his shoulders this time. Maybe his jaw. Maybe a brand-new 'hot spot' that never goes away. But hey—you got your ride."
-      },
-      { 
-        text: '🚗 Ask your partner to drive you', 
-        nextId: 'partner_drive',
-        description: "You don't want to. You really don't want to. But you call anyway, and he picks up after one ring, already worried. The drive is less than 15 minutes but feels like a death march. He helps you down the front steps, one arm trembling against yours, the other hand braced against the car door like he's holding up a collapsing building. You watch the pain flicker across his face as he opens the passenger side. You try not to scream while folding your body into the seat. Both of you pretend you're fine. By the time you get to the ER, he's soaked in sweat and shaking. You try to reassure him. He nods. Neither of you believe it."
-      },
-      {
-        text: '🔄 Start over',
-        nextId: 'start'
-      }
-    ],
+      { text: '🚕 Call an Uber', nextId: 'uber_ride' },
+      { text: '❤️‍🩹 The Partner Drive', nextId: 'partner_drive' },
+      { text: '🚽 Decide to Suffer Through the Pain at Home', nextId: 'home_suffering' }
+    ]
   },
-  
+
   uber_ride: {
     id: 'uber_ride',
     text: [
-      "🚕 The Uber Ride",
-      "The Uber driver takes one look at you and immediately regrets accepting the ride. You're pale, sweating, and curled into a fetal position in the backseat.",
+      "You brace yourself for the Everest-level challenge of getting into a car with roiling upper gastric pain, nausea, and the spinal flexibility of a mannequin.",
+      "But worse—far worse—is the quiet heartbreak of watching your partner, who can barely walk or sit, force himself into his own car to trail you.",
+      "He can't ride in an Uber; the seats are wrong, the angles are wrong, the world is wrong.",
+      "His own car is tricked out with ergonomic cushions, special mirrors, and the faint scent of medicinal despair.",
+      "He'll follow you to the hospital.",
+      "He'll sit in the parking lot with a heat pad, probably crying silently, and you'll pretend you don't notice.",
+      "But tomorrow—or next week, or forever—he'll be down with a new flare.",
+      "Maybe in his shoulders this time.",
+      "Maybe his jaw.",
+      "Maybe a brand-new 'hot spot' that never goes away.",
+      "But hey—you got your ride.",
+      "The Uber driver takes one look at you and immediately regrets accepting the ride.",
+      "You're pale, sweating, and curled into a fetal position in the backseat.",
       "'You okay back there?' he asks, eyeing you in the rearview mirror.",
       "You manage a weak 'mhm' between clenched teeth.",
-      "The ride is agony. Every bump, every turn, every stop sends waves of pain through your abdomen. You focus on your breathing, trying not to vomit in this stranger's car.",
-      "Your partner follows behind in his specially modified car, his own pain written across his face in the rearview mirror.",
-      "When you finally arrive at the ER, the Uber driver practically jumps out to open your door, eager to be rid of you. You stumble out, barely able to stand, while your partner parks his car and limps over to help you inside.",
+      "The ride is agony. Every bump, every turn, every stop sends waves of pain through your abdomen.",
+      "You focus on your breathing, trying not to vomit in this stranger's car.",
+      "Your partner follows behind, wrapped in a heating belt, his own pain written across his face in the rear-view mirror.",
+      "When you finally arrive at the ER, the Uber driver practically jumps out to open your door, eager to be rid of you.",
+      "You stumble out, barely able to stand, while your partner parks his car and limps over to help you inside.",
       "The automatic doors slide open, revealing the fluorescent-lit purgatory of the emergency room. A bored-looking receptionist glances up from her computer.",
       "'Take a number,' she says, gesturing to the dispenser. 'And maybe a vomit bag.'"
     ],
@@ -109,25 +133,74 @@ const storyData: StoryData = {
       { text: 'Take a number and wait.', nextId: 'er_arrival_expanded' },
       { text: 'Try to explain your situation to the receptionist.', nextId: 'receptionist_conversation' }
     ],
+    resources: [
+      {
+        title: "Ride-Sharing with Chronic Illness",
+        url: "https://www.healthline.com/health/chronic-illness/ride-sharing-with-chronic-illness"
+      },
+      {
+        title: "Coping with Medical Trauma",
+        url: "https://www.psychologytoday.com/us/blog/the-truth-about-exercise-addiction/201808/chronic-illness-and-medical-trauma"
+      },
+      {
+        title: "Emergency Room Preparation Tips",
+        items: [
+          "Bring a list of current medications and allergies",
+          "Have your insurance information ready",
+          "Pack comfort items (heating pad, water bottle, etc.)",
+          "Bring a support person if possible"
+        ]
+      }
+    ],
+    navigation: [
+      { text: '🔁 Start this story over from the beginning', nextId: 'start' },
+      { text: '🏠 Return to Main Menu to pick a different storyline', nextId: 'main_menu' }
+    ]
   },
 
   partner_drive: {
     id: 'partner_drive',
     text: [
       "🚗 The Partner Drive",
-      "The drive to the ER is a silent symphony of pain. Your partner's knuckles are white on the steering wheel, his jaw clenched against his own discomfort.",
-      "You try to find a position that doesn't make you want to scream. There isn't one.",
+      "He's already there, of course. He never left your side. The look you share is one of deep understanding, of love, of the bittersweet reality that this is your life now. Two chronically ill people, trying to take care of each other when neither can take care of themselves.",
+      "He helps you into his specially modified car, his movements stiff and careful. You lean on each other, two broken people trying to hold each other up.",
+      "The drive to the ER is a silent symphony of pain. His knuckles are white on the steering wheel, his jaw clenched against his own discomfort. You try to find a position that doesn't make you want to scream. There isn't one.",
       "The car is filled with the scent of his various pain creams and the sound of both of you trying not to cry.",
       "When you arrive, he helps you out of the car, his movements stiff and careful. You lean on each other, two broken people trying to hold each other up.",
       "The automatic doors slide open, revealing the fluorescent-lit purgatory of the emergency room. A bored-looking receptionist glances up from her computer.",
-      "'Take a number,' she says, gesturing to the dispenser. 'And maybe a vomit bag.'"
+      "'Take a number,' she says, gesturing to the dispenser. 'And maybe a vomit bag.'",
+      "You look at each other and smile, because what else can you do? You're a team. And teams take care of each other."
     ],
     choices: [
       { text: 'Take a number and wait.', nextId: 'er_arrival_expanded' },
       { text: 'Try to explain your situation to the receptionist.', nextId: 'receptionist_conversation' }
     ],
+    resources: [
+      {
+        title: "Supporting a Partner with Chronic Illness",
+        url: "https://www.healthline.com/health/chronic-illness/supporting-partner-chronic-illness"
+      },
+      {
+        title: "When Both Partners Have Chronic Pain",
+        url: "https://www.practicalpainmanagement.com/patient/resources/pain-self-management/when-both-partners-have-chronic-pain"
+      },
+      {
+        title: "Caregiver Self-Care Tips",
+        items: [
+          "Set boundaries and know your limits",
+          "Maintain your own medical care",
+          "Join support groups for caregivers",
+          "Practice stress management techniques",
+          "Accept help when offered"
+        ]
+      }
+    ],
+    navigation: [
+      { text: '🔁 Start this story over from the beginning', nextId: 'start' },
+      { text: '🏠 Return to Main Menu to pick a different storyline', nextId: 'main_menu' }
+    ]
   },
-  
+
   home_suffering: {
     id: 'home_suffering',
     text: [
@@ -138,8 +211,32 @@ const storyData: StoryData = {
     ],
     choices: [
       { text: 'Finally give in and go to the ER.', nextId: 'er_arrival_expanded' },
-      { text: 'Document your suffering.', nextId: 'home_tiktok' },
+      { text: 'Document your suffering.', nextId: 'home_tiktok' }
     ],
+    resources: [
+      {
+        title: "When to Go to the ER vs. Urgent Care",
+        url: "https://www.healthline.com/health/emergency-room-vs-urgent-care"
+      },
+      {
+        title: "Managing Chronic Pain at Home",
+        url: "https://www.webmd.com/pain-management/guide/managing-chronic-pain-at-home"
+      },
+      {
+        title: "Emergency Warning Signs",
+        items: [
+          "Severe, persistent abdominal pain",
+          "Signs of dehydration",
+          "Difficulty breathing",
+          "Loss of consciousness",
+          "When to call 911 vs. seeking other care options"
+        ]
+      }
+    ],
+    navigation: [
+      { text: '🔁 Start this story over from the beginning', nextId: 'start' },
+      { text: '🏠 Return to Main Menu to pick a different storyline', nextId: 'main_menu' }
+    ]
   },
   
   home_tiktok: {
@@ -153,8 +250,32 @@ const storyData: StoryData = {
     ],
     choices: [
       { text: 'Your followers convince you: Go to the ER.', nextId: 'er_arrival_expanded' },
-      { text: 'Stay home and become a full-time chronic illness influencer.', nextId: 'influencer_ending' },
+      { text: 'Stay home and become a full-time chronic illness influencer.', nextId: 'influencer_ending' }
     ],
+    resources: [
+      {
+        title: "Chronic Illness Community on Social Media",
+        url: "https://www.healthline.com/health/chronic-illness/social-media-community"
+      },
+      {
+        title: "Using Humor to Cope with Chronic Illness",
+        url: "https://www.verywellhealth.com/using-humor-to-cope-with-chronic-illness"
+      },
+      {
+        title: "Social Media Self-Care Tips",
+        items: [
+          "Set boundaries with your content",
+          "Take breaks when needed",
+          "Don't feel pressured to share everything",
+          "Build genuine connections",
+          "Remember it's okay to be both vulnerable and funny"
+        ]
+      }
+    ],
+    navigation: [
+      { text: '🔁 Start this story over from the beginning', nextId: 'start' },
+      { text: '🏠 Return to Main Menu to pick a different storyline', nextId: 'main_menu' }
+    ]
   },
   
   influencer_ending: {
@@ -166,6 +287,30 @@ const storyData: StoryData = {
       "It's not a cure, but it's something like validation. And in this healthcare system, sometimes that's the best treatment available."
     ],
     isEnding: true,
+    resources: [
+      {
+        title: "Building a Supportive Online Community",
+        url: "https://www.healthline.com/health/chronic-illness/online-community"
+      },
+      {
+        title: "Patient Advocacy Through Social Media",
+        url: "https://www.verywellhealth.com/social-media-healthcare-advocacy"
+      },
+      {
+        title: "Content Creator Tips for Chronic Illness",
+        items: [
+          "Focus on authentic storytelling",
+          "Protect your privacy and boundaries",
+          "Research before promoting products",
+          "Connect with other advocates",
+          "Remember your health comes first"
+        ]
+      }
+    ],
+    navigation: [
+      { text: '🔁 Start this story over from the beginning', nextId: 'start' },
+      { text: '🏠 Return to Main Menu to pick a different storyline', nextId: 'main_menu' }
+    ]
   },
   
   er_arrival_expanded: {
@@ -181,8 +326,41 @@ const storyData: StoryData = {
       { text: 'Hide in the bathroom.', nextId: 'hide_bathroom' },
       { text: 'Call your emergency contact.', nextId: 'call_emergency_contact' },
       { text: 'Try to talk to a doctor.', nextId: 'talk_to_doctor' },
-      { text: 'Go nuclear: Post a TikTok right now.', nextId: 'er_tiktok' },
+      { text: 'GO NUCLEAR: Post a TikTok right now.', nextId: 'er_tiktok' },
     ],
+    resources: [
+      {
+        title: "Understanding ER Triage",
+        url: "https://www.verywellhealth.com/emergency-room-triage-2615114"
+      },
+      {
+        title: "ER Survival Guide",
+        items: [
+          "What to bring to the ER",
+          "How to advocate for yourself",
+          "Understanding wait times",
+          "When to seek emergency care",
+          "Managing anxiety in the ER"
+        ]
+      },
+      {
+        title: "Pain Management Resources",
+        items: [
+          "How to describe your pain effectively",
+          "Understanding pain medications",
+          "Alternative pain management techniques",
+          "Patient rights regarding pain treatment"
+        ]
+      },
+      {
+        title: "Emergency Contact Planning",
+        url: "https://www.healthline.com/health/emergency-contact"
+      }
+    ],
+    navigation: [
+      { text: '🔁 Start this story over from the beginning', nextId: 'start' },
+      { text: '🏠 Return to Main Menu to pick a different storyline', nextId: 'main_menu' }
+    ]
   },
   confrontation: {
     id: 'confrontation',
@@ -197,6 +375,38 @@ const storyData: StoryData = {
       { text: 'Consider documenting this.', nextId: 'tiktok_moment_confront' },
       { text: 'GO NUCLEAR: You\'ve had enough.', nextId: 'nuclear_mode' }
     ],
+    resources: [
+      {
+        title: "Patient Bill of Rights",
+        url: "https://www.healthline.com/health/patient-bill-of-rights"
+      },
+      {
+        title: "Effective Communication with Healthcare Providers",
+        url: "https://www.verywellhealth.com/how-to-talk-to-your-doctor-2615484"
+      },
+      {
+        title: "Chronic Illness Support Groups",
+        items: [
+          "Facebook: Chronic Illness Support Network",
+          "TikTok: #ChronicIllnessWarriors",
+          "YouTube: Chronic Illness Support Channel",
+          "Reddit: r/ChronicIllness"
+        ]
+      },
+      {
+        title: "Workplace Rights and Chronic Illness",
+        items: [
+          "Understanding FMLA and ADA protections",
+          "How to document medical absences",
+          "Communicating with HR about chronic illness",
+          "Requesting reasonable accommodations"
+        ]
+      }
+    ],
+    navigation: [
+      { text: '🔁 Start this story over from the beginning', nextId: 'start' },
+      { text: '🏠 Return to Main Menu to pick a different storyline', nextId: 'main_menu' }
+    ]
   },
   waiting_game: {
     id: 'waiting_game',
@@ -209,6 +419,38 @@ const storyData: StoryData = {
       { text: 'Consider documenting this.', nextId: 'tiktok_moment_wait' },
       { text: 'GO NUCLEAR: You\'ve had enough.', nextId: 'nuclear_mode' }
     ],
+    resources: [
+      {
+        title: "Understanding ER Wait Times",
+        url: "https://www.healthline.com/health/emergency-room-wait-times"
+      },
+      {
+        title: "Coping with Long Waits",
+        items: [
+          "Managing anxiety during waits",
+          "Preparing for long hospital stays",
+          "Understanding triage systems",
+          "When to speak up about wait times"
+        ]
+      },
+      {
+        title: "Patient Rights During Waiting",
+        items: [
+          "Your right to timely care",
+          "How to check your status",
+          "When to request updates",
+          "Understanding wait time policies"
+        ]
+      },
+      {
+        title: "Hospital Wait Time Advocacy",
+        url: "https://www.verywellhealth.com/hospital-wait-time-advocacy-2615490"
+      }
+    ],
+    navigation: [
+      { text: '🔁 Start this story over from the beginning', nextId: 'start' },
+      { text: '🏠 Return to Main Menu to pick a different storyline', nextId: 'main_menu' }
+    ]
   },
   supervisor_escalation: {
     id: 'supervisor_escalation',
@@ -220,6 +462,38 @@ const storyData: StoryData = {
     choices: [
       { text: 'Focus on the potential tests.', nextId: 'glimmer_of_hope' },
       { text: 'Continue documenting your experience.', nextId: 'tiktok_moment_escalate' }
+    ],
+    resources: [
+      {
+        title: "How to Escalate Patient Concerns",
+        url: "https://www.verywellhealth.com/how-to-escalate-patient-concerns-2615485"
+      },
+      {
+        title: "Patient Advocacy Resources",
+        items: [
+          "How to request a patient advocate",
+          "Understanding hospital hierarchy",
+          "Documenting your concerns",
+          "When to involve hospital administration"
+        ]
+      },
+      {
+        title: "Effective Communication in Healthcare",
+        items: [
+          "How to be assertive without being aggressive",
+          "Documenting conversations with staff",
+          "Understanding your rights as a patient",
+          "When to request a different provider"
+        ]
+      },
+      {
+        title: "Hospital Complaint Process",
+        url: "https://www.healthline.com/health/hospital-complaint-process"
+      }
+    ],
+    navigation: [
+      { text: '🔁 Start this story over from the beginning', nextId: 'start' },
+      { text: '🏠 Return to Main Menu to pick a different storyline', nextId: 'main_menu' }
     ]
   },
   discharged_frustration: {
@@ -231,6 +505,38 @@ const storyData: StoryData = {
     ],
     choices: [
        { text: 'Leave, defeated, needing to figure out next steps.', nextId: 'mri_intro' }
+    ],
+    resources: [
+      {
+        title: "Understanding Your Discharge Papers",
+        url: "https://www.healthline.com/health/hospital-discharge-papers"
+      },
+      {
+        title: "Next Steps After ER Discharge",
+        items: [
+          "How to follow up with your primary care doctor",
+          "Understanding your discharge diagnosis",
+          "When to seek a second opinion",
+          "How to request your medical records"
+        ]
+      },
+      {
+        title: "Coping with Medical Trauma",
+        items: [
+          "Processing feelings of dismissal",
+          "Finding support after medical trauma",
+          "Self-care after difficult medical experiences",
+          "When to seek mental health support"
+        ]
+      },
+      {
+        title: "Patient Rights After Discharge",
+        url: "https://www.verywellhealth.com/patient-rights-after-discharge-2615486"
+      }
+    ],
+    navigation: [
+      { text: '🔁 Start this story over from the beginning', nextId: 'start' },
+      { text: '🏠 Return to Main Menu to pick a different storyline', nextId: 'main_menu' }
     ]
   },
    ask_about_xray: {
@@ -244,6 +550,38 @@ const storyData: StoryData = {
     choices: [
        { text: 'Keep waiting, hoping for more tests.', nextId: 'glimmer_of_hope' },
        { text: 'Document the frustration.', nextId: 'tiktok_moment_xray' }
+    ],
+    resources: [
+      {
+        title: "Understanding Medical Imaging",
+        url: "https://www.healthline.com/health/medical-imaging"
+      },
+      {
+        title: "Patient Rights During Tests",
+        items: [
+          "Your right to ask questions",
+          "Understanding test purposes",
+          "How to request test results",
+          "When to question test necessity"
+        ]
+      },
+      {
+        title: "Medical Test Documentation",
+        items: [
+          "What to record and what to avoid",
+          "Understanding HIPAA regulations",
+          "Protecting your medical privacy",
+          "Sharing experiences responsibly"
+        ]
+      },
+      {
+        title: "Online Patient Communities",
+        url: "https://www.verywellhealth.com/online-patient-communities-2615492"
+      }
+    ],
+    navigation: [
+      { text: '🔁 Start this story over from the beginning', nextId: 'start' },
+      { text: '🏠 Return to Main Menu to pick a different storyline', nextId: 'main_menu' }
     ]
   },
   glimmer_of_hope: {
@@ -254,440 +592,272 @@ const storyData: StoryData = {
     ],
     choices: [
         { text: 'Face the bathroom dilemma.', nextId: 'bathroom_dilemma' }
+    ],
+    resources: [
+      {
+        title: "Understanding Medical Tests",
+        url: "https://www.healthline.com/health/medical-tests"
+      },
+      {
+        title: "Coping with Medical Waiting",
+        items: [
+          "Managing anxiety during tests",
+          "Preparing for multiple procedures",
+          "Understanding test purposes",
+          "Keeping track of test results"
+        ]
+      },
+      {
+        title: "Patient Rights During Testing",
+        items: [
+          "Your right to information",
+          "Understanding test procedures",
+          "How to request test results",
+          "When to ask for explanations"
+        ]
+      },
+      {
+        title: "Medical Test Preparation",
+        url: "https://www.verywellhealth.com/medical-test-preparation-2615488"
+      }
+    ],
+    navigation: [
+      { text: '🔁 Start this story over from the beginning', nextId: 'start' },
+      { text: '🏠 Return to Main Menu to pick a different storyline', nextId: 'main_menu' }
     ]
   },
 
   // --- TikTok Branch --- (Can be reached from multiple points)
-  tiktok_moment_confront: { id: 'tiktok_moment_confront', text: "The frustration is overwhelming. Maybe... maybe you should record this?", choices: [ { text: 'Pull out your phone.', nextId: 'tiktok_prompt'} ] },
-  tiktok_moment_wait: { id: 'tiktok_moment_wait', text: "Hours of waiting... this is ridiculous. Should you film this?", choices: [ { text: 'Pull out your phone.', nextId: 'tiktok_prompt'} ] },
-  tiktok_moment_escalate: { id: 'tiktok_moment_escalate', text: "Even after escalating, the neglect feels palpable. Maybe the world should see?", choices: [ { text: 'Pull out your phone.', nextId: 'tiktok_prompt'} ] },
-  tiktok_moment_xray: { id: 'tiktok_moment_xray', text: "Another useless test? This is prime material for documentation.", choices: [ { text: 'Pull out your phone.', nextId: 'tiktok_prompt'} ] },
+  tiktok_moment_confront: { 
+    id: 'tiktok_moment_confront', 
+    text: "The frustration is overwhelming. Maybe... maybe you should record this?", 
+    choices: [ 
+      { text: 'Pull out your phone.', nextId: 'tiktok_prompt'} 
+    ],
+    resources: [
+      {
+        title: "Documenting Medical Experiences",
+        url: "https://www.healthline.com/health/documenting-medical-experiences"
+      },
+      {
+        title: "Patient Advocacy Through Social Media",
+        items: [
+          "How to share your story safely",
+          "Protecting your privacy online",
+          "Finding supportive communities",
+          "Using social media for advocacy"
+        ]
+      },
+      {
+        title: "Medical Documentation Tips",
+        items: [
+          "What to record and what to avoid",
+          "Understanding HIPAA regulations",
+          "Protecting your medical privacy",
+          "Sharing experiences responsibly"
+        ]
+      },
+      {
+        title: "Online Patient Communities",
+        items: [
+          "Best apps for chronic illness tracking",
+          "How to create a symptom journal",
+          "Tracking pain patterns and triggers",
+          "Sharing your data with healthcare providers"
+        ]
+      }
+    ],
+    navigation: [
+      { text: '🔁 Start this story over from the beginning', nextId: 'start' },
+      { text: '🏠 Return to Main Menu to pick a different storyline', nextId: 'main_menu' }
+    ]
+  },
+  tiktok_moment_wait: { 
+    id: 'tiktok_moment_wait', 
+    text: "Hours of waiting... this is ridiculous. Should you film this?", 
+    choices: [ 
+      { text: 'Pull out your phone.', nextId: 'tiktok_prompt'} 
+    ],
+    resources: [
+      {
+        title: "Understanding ER Wait Times",
+        url: "https://www.healthline.com/health/emergency-room-wait-times"
+      },
+      {
+        title: "Coping with Long Waits",
+        items: [
+          "Managing anxiety during waits",
+          "Preparing for long hospital stays",
+          "Understanding triage systems",
+          "When to speak up about wait times"
+        ]
+      },
+      {
+        title: "Patient Rights During Waiting",
+        items: [
+          "Your right to timely care",
+          "How to check your status",
+          "When to request updates",
+          "Understanding wait time policies"
+        ]
+      },
+      {
+        title: "Hospital Wait Time Advocacy",
+        url: "https://www.verywellhealth.com/hospital-wait-time-advocacy-2615490"
+      }
+    ],
+    navigation: [
+      { text: '🔁 Start this story over from the beginning', nextId: 'start' },
+      { text: '🏠 Return to Main Menu to pick a different storyline', nextId: 'main_menu' }
+    ]
+  },
+  tiktok_moment_escalate: { 
+    id: 'tiktok_moment_escalate', 
+    text: "Even after escalating, the neglect feels palpable. Maybe the world should see?", 
+    choices: [ 
+      { text: 'Pull out your phone.', nextId: 'tiktok_prompt'} 
+    ],
+    resources: [
+      {
+        title: "Patient Advocacy Through Social Media",
+        url: "https://www.healthline.com/health/patient-advocacy-social-media"
+      },
+      {
+        title: "Documenting Medical Experiences",
+        items: [
+          "How to share your story safely",
+          "Protecting your privacy online",
+          "Finding supportive communities",
+          "Using social media for advocacy"
+        ]
+      },
+      {
+        title: "Medical Documentation Tips",
+        items: [
+          "What to record and what to avoid",
+          "Understanding HIPAA regulations",
+          "Protecting your medical privacy",
+          "Sharing experiences responsibly"
+        ]
+      },
+      {
+        title: "Online Patient Communities",
+        items: [
+          "Best apps for chronic illness tracking",
+          "How to create a symptom journal",
+          "Tracking pain patterns and triggers",
+          "Sharing your data with healthcare providers"
+        ]
+      }
+    ],
+    navigation: [
+      { text: '🔁 Start this story over from the beginning', nextId: 'start' },
+      { text: '🏠 Return to Main Menu to pick a different storyline', nextId: 'main_menu' }
+    ]
+  },
+  tiktok_moment_xray: { 
+    id: 'tiktok_moment_xray', 
+    text: "Another useless test? This is prime material for documentation.", 
+    choices: [ 
+      { text: 'Pull out your phone.', nextId: 'tiktok_prompt'} 
+    ],
+    resources: [
+      {
+        title: "Understanding Medical Imaging",
+        url: "https://www.healthline.com/health/medical-imaging"
+      },
+      {
+        title: "Patient Rights During Tests",
+        items: [
+          "Your right to ask questions",
+          "Understanding test purposes",
+          "How to request test results",
+          "When to question test necessity"
+        ]
+      },
+      {
+        title: "Medical Test Documentation",
+        items: [
+          "What to record and what to avoid",
+          "Understanding HIPAA regulations",
+          "Protecting your medical privacy",
+          "Sharing experiences responsibly"
+        ]
+      },
+      {
+        title: "Online Patient Communities",
+        url: "https://www.verywellhealth.com/online-patient-communities-2615492"
+      }
+    ],
+    navigation: [
+      { text: '🔁 Start this story over from the beginning', nextId: 'start' },
+      { text: '🏠 Return to Main Menu to pick a different storyline', nextId: 'main_menu' }
+    ]
+  },
 
   tiktok_prompt: {
     id: 'tiktok_prompt',
-    text: "In a moment of desperation and dark humor, you decide to post a TikTok from your hospital bed. It's the first time you might be truly seen — not by the staff, but by the world.",
-    choices: [
-      { text: 'Post it: Share your experience.', nextId: 'viral_hit_setup' },
-      { text: 'Delete it: It feels too raw.', nextId: 'private_suffering' },
-    ],
-  },
-  viral_hit_setup: {
-      id: 'viral_hit_setup',
-      text: "You film a short, raw video. Which one captures the mood?",
-      choices: [
-          { text: `Film "I am Blanket".`, nextId: 'viral_hit_blanket'},
-          { text: `Film "Medical Bingo".`, nextId: 'viral_hit_bingo'}
-      ]
-  },
-  viral_hit_blanket: {
-    id: 'viral_hit_blanket',
-    tiktokEmbed: `"And this... is my blankie. My only friend in the hospital, who doesn't judge me when I poop myself. #IAmBlanket"`,
     text: [
-      "Filmed lying in your ER bed, you hold up your crocheted blanket and do a deadpan voiceover for TikTok: \"And this... is my blankie. My only friend in the hospital, who doesn't judge me when I poop myself. #IAmBlanket\"",
-      "The comments section explodes: \"Same.\" \"A blanket's better than these doctors.\" \"This video is my therapy.\" \"Can you make me one of those blankets though?\" \"I laughed so hard I aspirated my Ensure.\" \"They gave me Tums for internal bleeding.\" \"Your blanket has better bedside manner than my gastroenterologist.\" \"Is your blanket accepting new patients?\"",
-      "The recognition is bittersweet validation. You post another. Then another, darker, funnier. Sock puppets reenacting your last blood draw. Lip-syncing Billie Eilish while holding a sign that says \"Guess how many days I've been NPO?\"",
-      "Your social media following grows. You're seen. But reality bites: you still need the bathroom."
+      "You pull out your phone, your hands shaking with a mix of pain and frustration. The camera app opens, and you take a deep breath.",
+      "This could be your moment to share your story, to show the world what it's really like to be a patient in the ER with a chronic illness.",
+      "But what should you say? How should you frame this? The choice is yours."
     ],
     choices: [
-      { text: 'Face the bathroom dilemma.', nextId: 'bathroom_dilemma' },
+      { text: 'Record a raw, emotional moment.', nextId: 'raw_emotion' },
+      { text: 'Make a darkly humorous post.', nextId: 'dark_humor' },
+      { text: 'Create an educational video.', nextId: 'educational' },
+      { text: 'Share your symptoms and pain level.', nextId: 'symptom_share' }
     ],
-  },
-    viral_hit_bingo: {
-    id: 'viral_hit_bingo',
-    tiktokEmbed: `"The doctors have no idea what's wrong, but here's their bingo card. Small bowel obstruction, maybe? Radiology says gas and diarrhea." You dramatically throw the chart.`,
-    text: [
-      "Filmed from your hospital bed, your TikTok shows you holding up a medical chart and sarcastically saying: \"The doctors have no idea what's wrong with me, but here's their bingo card. Small bowel obstruction, maybe? Radiology says gas and diarrhea.\" You dramatically throw the chart in the air like it's confetti.",
-      "Comments pour in: \"Same.\" \"Maybe they'll find your missing kidney in one of those scans.\" \"They gave me Tums for internal bleeding.\" \"Someone should play Find the Vein next time.\" \"I laughed so hard I aspirated my Ensure.\" \"This is why I have medical PTSD.\" \"Is your doctor playing symptom Yahtzee or actually helping?\" \"Hospital Bingo needs to be an actual game.\"",
-      "The recognition is bittersweet validation. You post another video, then another, each darker and funnier. Your follower count climbs as you document this surreal healthcare nightmare with increasing creativity.",
-      "Your following grows. You're seen. But reality bites: you still need the bathroom."
+    resources: [
+      {
+        title: "Sharing Medical Experiences Online",
+        url: "https://www.healthline.com/health/sharing-medical-experiences"
+      },
+      {
+        title: "Social Media Advocacy",
+        items: [
+          "How to share your story safely",
+          "Protecting your privacy online",
+          "Finding supportive communities",
+          "Using social media for advocacy"
+        ]
+      },
+      {
+        title: "Medical Documentation Tips",
+        items: [
+          "What to record and what to avoid",
+          "Understanding HIPAA regulations",
+          "Protecting your medical privacy",
+          "Sharing experiences responsibly"
+        ]
+      },
+      {
+        title: "Online Patient Communities",
+        items: [
+          "Best apps for chronic illness tracking",
+          "How to create a symptom journal",
+          "Tracking pain patterns and triggers",
+          "Sharing your data with healthcare providers"
+        ]
+      },
+      {
+        title: "Chronic Pain Communication",
+        items: [
+          "How to describe your pain effectively",
+          "Understanding pain terminology",
+          "Advocating for pain management",
+          "Finding pain management specialists"
+        ]
+      },
+      {
+        title: "Patient Education Resources",
+        url: "https://www.verywellhealth.com/patient-education-resources"
+      }
     ],
-    choices: [
-      { text: 'Face the bathroom dilemma.', nextId: 'bathroom_dilemma' },
-    ],
-  },
-   viral_hit_poop: {
-    id: 'viral_hit_poop',
-    tiktokEmbed: `After your MRI, you film a TikTok in the bathroom, holding up the emergency wet wipes packet like a trophy: "Guess who finally got the full hospital experience? I'm the first to shit AND get stuck in a machine. #EveryDayIsAnAdventure #ERChronicles"`,
-    text: [
-      "Later, after the MRI incident, you manage to film the 'I Pooped Myself Again' TikTok. You hold up the emergency wet wipes packet like it's an Olympic medal, your expression a perfect mix of pride and despair.",
-      "Comments explode: \"Same.\" \"Hospital bingo: ✓ poop yourself ✓ get stuck in machine ✓ cry in bathroom.\" \"This is the most relatable content I've seen all year.\" \"The wet wipes packet as a trophy sent me.\" \"New fear unlocked.\" \"I laughed so hard I aspirated my Ensure.\" \"Still better care than I got with my appendix burst.\" \"At least they gave you wipes, I had to use the gown.\" \"That MRI tech deserves a 1-star Yelp review.\" \"Congratulations on achieving the hospital trifecta: humiliation, radiation, and constipation all in one day!\"",
-      "You post another video from the bathroom floor, dramatically whispering about your escape plan. Each video gets more views than the last. One commenter writes: \"I'm here for the trilogy. When does the Netflix adaptation drop?\"",
-      "Being seen online is one thing, escaping this hospital is another."
-    ],
-    choices: [
-      { text: 'Face the discharge.', nextId: 'mri_discharge' },
-    ],
-  },
-  private_suffering: {
-    id: 'private_suffering',
-    text: "You reconsider, deleting the draft. It feels too vulnerable, too raw to share this particular moment with strangers online. You put the phone away, the weight of the neglect settling back in. The urgent need for the bathroom returns.",
-    choices: [
-      { text: 'Face the bathroom dilemma.', nextId: 'bathroom_dilemma' },
-    ],
-  },
-
-  // --- Bathroom Branch --- (Reached after hope/TikTok)
-  bathroom_dilemma: {
-    id: 'bathroom_dilemma',
-    text: [
-      "You desperately need to get to the bathroom again. The memory of the last incident - the shrieking alarm, the nurse yanking you back, soiling yourself, vomiting in your lap - is still fresh and traumatic.",
-      "The humiliation of needing help versus the risk of setting off alarms and getting yelled at is paralyzing. But the pressure is building and you can't hold it much longer."
-    ],
-    choices: [
-      { text: 'Ask for help: Ring the call button.', nextId: 'help_please' },
-      { text: 'Try to go anyway: Risk the alarm.', nextId: 'risky_escape' },
-    ],
-  },
-  help_please: {
-    id: 'help_please',
-    text: [
-        "You press the call button. Minutes stretch into an eternity. The pressure builds. Finally, a nurse arrives, looking annoyed.",
-        "But it's too late. You've soiled yourself. The nurse offers a brief, impersonal cleanup, leaving you feeling ashamed and helpless. There's no offer of a proper shower.",
-        "Eventually, talk turns to more imaging. They mention needing an MRI."
-        ],
-    choices: [
-        { text: 'Prepare for the MRI.', nextId: 'mri_intro' }
+    navigation: [
+      { text: '🔁 Start this story over from the beginning', nextId: 'start' },
+      { text: '🏠 Return to Main Menu to pick a different storyline', nextId: 'main_menu' }
     ]
-  },
-  risky_escape: {
-    id: 'risky_escape',
-    text: [
-        "You carefully, painfully, swing your legs over the side, trying to disable the alarm sensors. Too late! It blares loudly.",
-        "You stumble towards the bathroom as a nurse rushes in, shouting about safety protocols. 'You HAVE to call!'",
-        "Humiliated but defiant, you make it to the toilet just in time. The privacy is a relief, but the confrontation leaves you shaken.",
-        "Later, they tell you more imaging is needed. An MRI."
-    ],
-     choices: [
-        { text: 'Prepare for the MRI.', nextId: 'mri_intro' }
-    ]
-  },
-
-  // --- MRI Branch --- (Reached after bathroom or discharge path)
-  mri_intro: {
-    id: 'mri_intro',
-    text: "After hours more waiting, or perhaps following that frustrating earlier discharge, they decide you need an MRI Enterography or Defecography to examine your lower colon and rectum. They wheel you towards the MRI suite.",
-    choices: [
-        { text: 'Undergo the procedure.', nextId: 'mri_experience'}
-    ]
-  },
-  mri_experience: {
-    id: 'mri_experience',
-    text: [
-        "The tech explains they need to insert a silicone-based contrast gel into your rectum. 'It helps us see how things are functioning. Try to hold it in.'",
-        "The procedure is deeply uncomfortable, invasive. Almost immediately, the pressure is unbearable. You can't hold it. You desperately expel the gel and everything else as they slide you into the narrow, clanging tube of the MRI machine.",
-        "You're trapped. The smell is overpowering. You call out, choked with humiliation and panic. No response. Eternity passes.",
-        "You scream. Finally, a male tech appears, avoids eye contact, hands you a single packet of wet wipes, and leaves. You have feces in your hair. You try to clean yourself, but it's impossible. They deny you a shower."
-    ],
-    choices: [
-      { text: 'Post the "I Pooped Myself Again" TikTok.', nextId: 'viral_hit_poop' },
-      { text: 'Just face the discharge.', nextId: 'mri_discharge' },
-    ],
-  },
-    mri_discharge: {
-      id: 'mri_discharge',
-      text: "After the MRI ordeal, they discharge you. Your own clothes are nowhere to be found. They hand you flimsy paper scrubs. You still feel filthy and degraded.",
-      choices: [
-          { text: 'Attempt to get an Uber.', nextId: 'uber_refusal'}
-      ]
-  },
-
-  // --- Ending Branches ---
-  uber_refusal: {
-    id: 'uber_refusal',
-    text: [
-        "Desperate to get home, you order an Uber. The driver pulls up, takes one look (and smell) at you in your paper scrubs, reeking of the MRI incident.",
-        "'Ma'am,' he says, nose wrinkled. 'I can't... I can't let you in my car like this. I'd have to burn it.' He drives off, leaving you on the curb, a fresh wave of humiliation washing over you."
-    ],
-    choices: [
-      { text: 'Text your partner for rescue.', nextId: 'rescue_ending' },
-    ],
-  },
-  rescue_ending: {
-    id: 'rescue_ending',
-    text: [
-        "In desperation, swallowing your pride and worry about flaring up his own condition, you text your partner.",
-        "Thirty minutes later, he arrives. Ginger ale, emesis bags, no judgment in his eyes — only concern. He understands central sensitization, the dismissals, the pain. He helps you into the car.",
-        "You vomit twice on the way home. He's just there, supporting you physically and emotionally in a way the hospital never could.",
-        "The journey is long, nauseating, painful. But you're not alone. He gets it."
-    ],
-    isEnding: true,
-  },
-
-  // --- Add the Nuclear Mode scene ---
-  nuclear_mode: {
-    id: 'nuclear_mode',
-    text: [
-      "Something in you snaps. It's the straw that breaks the camel's already shattered back.",
-      "You rise, surprising yourself with the sudden surge of adrenaline-fueled strength. Your voice cuts through the ambient noise of the ER like a scalpel."
-    ],
-    choices: [
-      { text: 'Keep going: There\'s more where that came from.', nextId: 'nuclear_mode_escalation' },
-      { text: 'Get creative: Start using medical metaphors.', nextId: 'nuclear_metaphors' },
-      { text: 'Dial it back: You\'ve made your point.', nextId: 'nuclear_aftermath' }
-    ],
-  },
-  
-  nuclear_metaphors: {
-    id: 'nuclear_metaphors',
-    text: [
-      "You decide to get creative with your outrage, channeling your inner medical poet.",
-      "'MY DIGNITY HAS BEEN AMPUTATED WITHOUT ANESTHESIA! MY PATIENCE HAS FLAT-LINED! MY FAITH IN THE HEALTHCARE SYSTEM IS CODING AND NOBODY IS BRINGING THE DEFIBRILLATOR!'",
-      "The staff is frozen, unsure how to respond to your medical metaphor meltdown. You're on a roll.",
-      "'I'VE BEEN WAITING SO LONG MY CONDITION HAS METASTASIZED FROM 'UNCOMFORTABLE' TO 'DYING OF NEGLECT'! IS THIS WHAT THEY TEACH IN MEDICAL SCHOOL? TRIAGE BY WHOEVER SCREAMS THE LOUDEST?'",
-      "A doctor peeks out from behind a curtain, then quickly retreats. A janitor walking by gives you an approving nod. He gets it."
-    ],
-    choices: [
-      { text: 'Switch to dark humor.', nextId: 'nuclear_dark_humor' },
-      { text: 'Document this epic meltdown.', nextId: 'nuclear_tiktok' },
-      { text: 'Face the consequences.', nextId: 'nuclear_aftermath' }
-    ]
-  },
-  
-  nuclear_dark_humor: {
-    id: 'nuclear_dark_humor',
-    text: [
-      "You pivot to gallows humor, your voice dripping with sarcasm.",
-      "'YOU KNOW WHAT? DON'T WORRY ABOUT ME! I'LL JUST DIE RIGHT HERE AND SAVE YOU THE PAPERWORK! I'LL EVEN FILL OUT MY OWN TOE TAG TO SAVE TIME! CAUSE OF DEATH: WAITING FOR SOMEONE TO GIVE A SHIT!'",
-      "You pull out your crocheting needle dramatically. 'I CAN START STITCHING MY OWN BODY BAG WHILE I WAIT! WHAT COLOR WOULD LOOK BEST WITH MY COMPLEXION? CORPSE BLUE? NEGLECT PURPLE?'",
-      "A nurse walks by and mutters, 'We're doing our best.' You counter: 'IF THIS IS YOUR BEST, YOUR WORST MUST INVOLVE ACTUAL MURDER! IS THIS HOSPITAL OR HOSPICE?'",
-      "Someone from the far end of the hall shouts, 'Preach it, sister!' The revolution is spreading."
-    ],
-    choices: [
-      { text: 'Get even darker.', nextId: 'nuclear_absolute_darkness' },
-      { text: 'Document this epic meltdown.', nextId: 'nuclear_tiktok' },
-      { text: 'Face the consequences.', nextId: 'nuclear_aftermath' }
-    ]
-  },
-  
-  nuclear_absolute_darkness: {
-    id: 'nuclear_absolute_darkness',
-    text: [
-      "You hit rock bottom, and then you start digging.",
-      "'I'M GOING TO HAUNT THIS HOSPITAL WHEN I DIE! AND CONSIDERING YOUR WAIT TIMES, THAT'LL BE BEFORE I GET MY TEST RESULTS! I'LL BE THE GHOST THAT UNPLUGS THE COFFEE MACHINE AND HIDES THE GOOD PENS!'",
-      "You're laughing now, but it's the kind of laugh that makes people back away slowly. 'I'M GOING TO START A YELP REVIEW SO SCATHING IT'LL MAKE GORDON RAMSAY LOOK LIKE MR. ROGERS! ONE STAR - GREAT PLACE IF YOU ENJOY PAIN, NEGLECT, AND FLUORESCENT LIGHTING THAT MAKES EVERYONE LOOK LIKE A CORPSE!'",
-      "A security guard approaches cautiously but stops short when you turn your gaze on him. 'OH LOOK, NOW I'M A SECURITY THREAT! IS IT BECAUSE I'M BLEEDING, CRYING, OR JUST EXISTING INCONVENIENTLY?'",
-      "Two other patients are now filming you. You've become hospital entertainment, a one-person show titled 'Woman On The Edge: The Musical, But Everyone's Too Busy To Hear You Sing.'"
-    ],
-    choices: [
-      { text: 'Bow to your audience.', nextId: 'nuclear_tiktok_viral' },
-      { text: 'Face the consequences.', nextId: 'nuclear_aftermath' }
-    ]
-  },
-  
-  nuclear_mode_escalation: {
-    id: 'nuclear_mode_escalation',
-    text: [
-      "You're on a roll now, a one-person wrecking ball of righteous fury.",
-      "'YOU KNOW WHAT? I'LL JUST DIAGNOSE MYSELF! WHO NEEDS EIGHT YEARS OF MEDICAL SCHOOL WHEN YOU CAN JUST GOOGLE 'WHY DOES MY STOMACH FEEL LIKE IT'S BEING USED AS A PIÑATA BY ANGRY BASEBALL PLAYERS?'",
-      "You grab your crocheted blanket, waving it like a flag. 'I MADE THIS ENTIRE BLANKET WHILE WAITING FOR SOMEONE TO ACKNOWLEDGE THAT I EXIST. I COULD HAVE CROCHETED A WHOLE MEDICAL STAFF WHO ACTUALLY CARES AND SEVERAL ANATOMICALLY CORRECT ORGANS I'M APPARENTLY SUPPOSED TO JUST LIVE WITHOUT!'",
-      "Security appears at the end of the hallway, but they seem reluctant to approach. A nearby patient whispers, 'Tell them about the vending machine that ate your dollar!' Another shouts, 'And the bathroom that looks like a crime scene!' You're gaining fans.",
-      "'IF ANYONE NEEDS ME, I'LL BE IN THE PARKING LOT PERFORMING MY OWN APPENDECTOMY WITH A PLASTIC SPOON FROM THE CAFETERIA! AT LEAST I'LL BE ABLE TO SEE THE CERTIFICATE ON MY WALL THAT SAYS I GIVE A DAMN ABOUT MY PATIENTS!'"
-    ],
-    choices: [
-      { text: 'Get even more creative.', nextId: 'nuclear_metaphors' },
-      { text: 'Document this epic meltdown.', nextId: 'nuclear_tiktok' },
-      { text: 'Face the consequences.', nextId: 'nuclear_aftermath' }
-    ]
-  },
-
-  nuclear_tiktok: {
-    id: 'nuclear_tiktok',
-    tiktokEmbed: `"LIVE from the ER: Watch me lose my entire mind while security decides if I'm worth the paperwork. #ERMeltdown #ChronicIllnessLife"`,
-    text: [
-      "In a moment of clarity amidst the chaos, you pull out your phone and start recording.",
-      "Your TikTok rant goes instantly viral. Comments flood in faster than you can read them:",
-      "\"Same.\" \"I'm laughing so hard I aspirated my Ensure.\" \"This is the energy I needed for my next appointment.\" \"Someone get this woman a Netflix special!\" \"I'm showing this to my doctor next time they tell me it's 'just anxiety.'\" \"The way the nurse in the background is PANICKING.\" \"When you said 'First, ignore all harm' I felt that spiritually.\" \"Please sell merch with that line about Ikea furniture.\" \"My husband had to get the doctor because I'm now in the fetal position laughing so hard I'm crying and can't breathe.\"",
-      "The nurses are glaring, but they're moving faster now. It's amazing how efficient people become when they're on camera and their incompetence is being broadcast to millions."
-    ],
-    choices: [
-      { text: 'End your performance on a high note.', nextId: 'nuclear_aftermath' },
-      { text: 'Double down for the followers.', nextId: 'nuclear_tiktok_viral' }
-    ]
-  },
-
-  nuclear_tiktok_viral: {
-    id: 'nuclear_tiktok_viral',
-    tiktokEmbed: `"PART 2: Hospital Meltdown - Now with security! They're offering me a room now that I'm INTERNET FAMOUS. #MedicalGaslighting #VanityFair #MillionsOfViews"`,
-    text: [
-      "Your first TikTok hit 2 million views in an hour. You're officially viral, so you decide to give the people what they want.",
-      "You film a sequel, hamming it up for the camera while continuing your rant. \"And THIS is where I've been sitting for four hours! Notice the lovely view of OTHER PEOPLE getting care! And THESE are my discharge papers they tried to give me before even checking my vitals!\"",
-      "Comments are pouring in: \"Same.\" \"You're the healthcare hero we needed.\" \"This is my Roman Empire.\" \"The sequel is better than the original?!\" \"I'm making a cross-stitch of your quotes.\" \"My nurse just asked why I'm cry-laughing.\" \"POV: watching this from my own ER gurney.\" \"They gave me Tums for internal bleeding but this video healed me.\"",
-      "A nurse supervisor appears, looking both irritated and alarmed. \"Ma'am, please stop filming. We can take you to a room now.\" You respond to the camera: \"WITNESS THE MIRACLE OF SOCIAL MEDIA, FOLKS! Suddenly there's a room available now that I have two million witnesses!\"",
-      "As they wheel you away, you can hear other patients applauding. Your phone is blowing up with notifications. #HospitalHarriet and #ERQueen are trending. Buzzfeed has already reached out for an interview."
-    ],
-    choices: [
-      { text: 'Take your victory lap.', nextId: 'nuclear_aftermath_celebrity' }
-    ]
-  },
-  
-  nuclear_aftermath: {
-    id: 'nuclear_aftermath',
-    text: [
-      "The echo of your outburst hangs in the air. There's a strange, almost respectful silence in its wake.",
-      "Suddenly, a doctor you haven't seen before appears. She looks tired but actually makes eye contact. 'I heard there was a situation. Let's get you into a room and figure out what's going on.'",
-      "It shouldn't take a nuclear meltdown to receive basic care, but sometimes the squeaky wheel—or in your case, the air-raid siren—gets the grease.",
-      "You're finally moved to a proper bed. The care isn't perfect, but there's a palpable shift. They're listening now. You've burned bridges, but at least you're no longer burning from neglect."
-    ],
-    choices: [
-      { text: 'Proceed with tests.', nextId: 'glimmer_of_hope' }
-    ]
-  },
-  
-  nuclear_aftermath_celebrity: {
-    id: 'nuclear_aftermath_celebrity',
-    text: [
-      "The fallout from your viral meltdown is surreal. You're whisked into a private room, where suddenly every specialist in the hospital finds time to consult on your case.",
-      "Your phone won't stop buzzing. You've been contacted by three morning shows, two patient advocacy groups, and someone claiming to be from Netflix who wants to discuss \"a limited series about medical gaslighting.\"",
-      "A hospital administrator appears, smiling nervously. \"We want you to know we take patient satisfaction very seriously...\" You resist the urge to ask why it took millions of views to be taken seriously.",
-      "The care you receive is now meticulous, almost comically attentive. Every request is met with immediate action. You wonder how many others are still waiting in hallways, their suffering unfilmed and therefore invisible."
-    ],
-    choices: [
-      { text: 'Use your new platform for good.', nextId: 'nuclear_advocacy' },
-      { text: 'Focus on your own recovery for now.', nextId: 'glimmer_of_hope' }
-    ]
-  },
-  
-  nuclear_advocacy: {
-    id: 'nuclear_advocacy',
-    text: [
-      "You decide to leverage your viral fame for something bigger than yourself. Between tests and treatments, you start posting about others in the hospital who aren't being heard.",
-      "With permission, you share stories of the elderly woman who's been waiting 12 hours, the young man with chronic pain who keeps getting dismissed, the non-binary person whose charts keep getting misgendered.",
-      "Your hashtag #TakeANumber becomes a movement. People around the country start documenting their ER waits, their dismissals, their struggles to be believed. Medical professionals join in, exposing the broken system from the inside.",
-      "When you finally get discharged, you leave with more than just a vague diagnosis and a follow-up appointment. You leave with purpose—and a book deal about patient advocacy in a broken healthcare system."
-    ],
-    choices: [
-      { text: 'But first, you need to get home...', nextId: 'uber_refusal' }
-    ],
-    // This will lead back to the main story path
-  },
-
-  // Add the new Triage Takes Hours scene
-  triage_takes_hours: {
-    id: 'triage_takes_hours',
-    text: [
-      "Triage takes hours. You crochet a queen-sized blanket while waiting for a hallway gurney. You're offered Tylenol, a lidocaine patch (for your stomach), and eye rolls. The pain is upper gastric spasms. The patch is for muscle pain. You tell them. They nod and hand you a psych eval form.",
-      "Eventually, someone wheels you off for abdominal X-rays. Standing up is nearly impossible, but no one seems to care. You're hunched over in pain, clinging to the imaging table, and still get reprimanded for being dramatic. They're looking for a small bowel obstruction, even though your chart says you're on two daily bowel preps. The radiologist notes say \"excessive gas and diarrhea.\" You whisper, \"Idiots.\"",
-      "Later, they wheel you to get another CT scan with contrast — your sixth in as many weeks. You do the mental math on the radiation. If the illness doesn't kill you, the scans might. You pull up the radiology report on your phone and feed it into ChatGPT. It swears: \"WHAT THE HELL ARE THEY EVEN LOOKING FOR? THIS IS LIKE MEDICAL BINGO WITH A SHOTGUN.\"",
-      "You're wheeled back to the hallway. Still no room.",
-      "You try to make it to the bathroom, but the bed alarm shrieks. A nurse yanks you back. You shit your pants and vomit into your lap. You ring the call button every two hours, begging for help. Each time, you're told, \"Your nurse will be there soon.\" They never are."
-    ],
-    choices: [
-      { text: 'Ask about the X-ray results.', nextId: 'ask_about_xray' },
-      { text: 'Try again desperately to reach the bathroom.', nextId: 'bathroom_dilemma' },
-      { text: 'Document this nightmare.', nextId: 'tiktok_moment_triage' },
-      { text: 'GO NUCLEAR: This is the last straw.', nextId: 'nuclear_mode' }
-    ],
-  },
-
-  // Add a new TikTok entry point from the triage scene
-  tiktok_moment_triage: { 
-    id: 'tiktok_moment_triage', 
-    text: "The combination of pain, humiliation, and neglect has reached a breaking point. Your phone is the only witness to your suffering.", 
-    choices: [ 
-      { text: 'Record this for posterity.', nextId: 'tiktok_prompt'} 
-    ] 
-  },
-
-  // New ER branch options
-  demand_pain_relief: {
-    id: 'demand_pain_relief',
-    text: [
-      "You square your shoulders, ignore the dried vomit on your gown, and ask—politely, but firmly—for relief.",
-      "The nurse gives you the Look. You know the one. She disappears behind the curtain.",
-      "Thirty minutes later, a resident appears. He looks like he just crawled out of a textbook and smells faintly of Red Bull and hubris.",
-      "'So, you're reporting… pain? Can you rate it from one to ten?'",
-      "You try to answer, but he interrupts with, 'Hmm. Interesting.' He walks off.",
-      "You are now labeled 'drug-seeking' in the system. Congrats. Your chart has been downgraded to a case study in suspicion."
-    ],
-    choices: [
-      { text: 'Ask to speak to the attending.', nextId: 'speak_to_attending' },
-      { text: 'Pull out your pain scale with emoji faces.', nextId: 'pain_scale_emojis' },
-      { text: 'Say nothing and wait.', nextId: 'waiting_game' },
-      { text: 'GO NUCLEAR: You\'ve had it with being labeled.', nextId: 'nuclear_mode' },
-    ],
-  },
-  
-  speak_to_attending: {
-    id: 'speak_to_attending',
-    text: [
-      "You gather your strength and ask to speak with the attending physician. The resident's expression flickers between annoyance and panic.",
-      "'The attending is very busy,' he says, voice tight. 'But I'll let them know you've... requested them.'",
-      "Two hours pass. Your pain continues its relentless symphony. Finally, the attending appears—clearly irritated at being summoned.",
-      "They speak exclusively to the resident, not to you. 'What's the issue here?' they ask, as if you're a particularly puzzling appliance malfunction.",
-      "The resident mumbles something about 'pain management concerns' while giving a subtle eye roll that you're definitely not meant to see, but absolutely do.",
-      "The attending nods sagely, then turns to you with a practiced smile. 'We'll get you something for the discomfort. But we need to be careful with narcotics.'"
-    ],
-    choices: [
-      { text: 'Try to explain your medical history again.', nextId: 'explain_history' },
-      { text: 'Accept whatever they offer.', nextId: 'accept_treatment' },
-      { text: 'GO NUCLEAR: Time for a medical ethics lecture.', nextId: 'nuclear_attending' },
-    ],
-  },
-  
-  nuclear_attending: {
-    id: 'nuclear_attending',
-    text: [
-      "'Discomfort?' Your voice starts low but quickly gains momentum like a medical school rejection letter avalanche.",
-      "'DISCOMFORT is when your shoes pinch. DISCOMFORT is a scratchy tag in your shirt. This is PAIN. P-A-I-N. Did they skip that chapter in your prestigious medical education?'",
-      "The attending blinks, clearly unused to patients who don't cower in reverence.",
-      "'And while we're educating each other, let's talk about the difference between addiction, dependence, and BASIC HUMAN DIGNITY. Did you know that studies show pain patients are wildly under-medicated due to unfounded addiction fears? I have the journal citations if you'd like!'",
-      "You're on a roll now, years of medical dismissal fueling your impromptu TED talk.",
-      "'Let's discuss how untreated pain creates long-term nervous system changes! Or perhaps you'd prefer a quick primer on the discrepancy in pain management between genders and races? I've prepared a mental bibliography for just this occasion!'"
-    ],
-    choices: [
-      { text: 'Continue your scholarly rant.', nextId: 'nuclear_attending_continued' },
-      { text: 'End with a powerful conclusion.', nextId: 'nuclear_attending_conclusion' },
-    ],
-  },
-  
-  nuclear_attending_continued: {
-    id: 'nuclear_attending_continued',
-    text: [
-      "The attending takes an instinctive step back as you hit your stride.",
-      "'DID YOU KNOW that the very opioid guidelines you're hiding behind explicitly state they shouldn't be applied to acute pain situations? OR THAT those guidelines have been officially walked back by their own authors because of misapplication?'",
-      "You're gesticulating wildly now, your hospital gown flapping dangerously. A small crowd has gathered—nurses, other patients, someone from the cafeteria who just came up to deliver lunch trays.",
-      "'AND ANOTHER THING! The whole concept of pain as the fifth vital sign may have been flawed, but swinging the pendulum to 'just suffer' isn't evidence-based medicine, it's MEDIEVAL!'",
-      "The attending looks like they're mentally calculating the fastest route to the exit. The resident is frantically typing something into the computer—probably adding 'delusional' to your growing list of unflattering chart notes."
-    ],
-    choices: [
-      { text: 'Finish with dramatic flourish.', nextId: 'nuclear_attending_conclusion' },
-    ],
-  },
-  
-  nuclear_attending_conclusion: {
-    id: 'nuclear_attending_conclusion',
-    text: [
-      "You take a deep breath, summoning dignity despite your paper gown and unwashed hair.",
-      "'I'm not asking for a lifetime supply of narcotics. I'm asking for you to treat my pain seriously for the brief time I'm in your care. To treat ME seriously.'",
-      "You lock eyes with the attending. 'If that's too much to ask, I'd like both your names and your medical license numbers for my formal complaint.'",
-      "A stunned silence falls. Then, from the back of the assembled onlookers, someone starts slow-clapping. It's an elderly woman in a wheelchair who mutters, 'Preach it, honey.'",
-      "Fifteen minutes later, you have pain medication, a real pillow instead of a rolled-up towel, and mysteriously, a turkey sandwich that nobody remembers ordering for you.",
-      "The resident avoids eye contact when checking your vitals. The attending hasn't been seen since. Your chart now includes a new note: 'Patient is a strong self-advocate.'"
-    ],
-    choices: [
-      { text: 'Rest more comfortably while you wait for test results.', nextId: 'glimmer_of_hope' },
-      { text: 'Document your victory for posterity.', nextId: 'tiktok_prompt' },
-    ],
-  },
-  
-  pain_scale_emojis: {
-    id: 'pain_scale_emojis',
-    text: [
-      "You reach into your bag and pull out a laminated pain scale you created after your eighth emergency room visit. It features emoji faces and devastatingly accurate descriptions.",
-      "1-3: 'I notice it but can function.'",
-      "4-6: 'I'm distracted and grimacing but can fake being okay in public.'",
-      "7-8: 'I'm making involuntary noises and can't focus on anything else.'",
-      "9: 'I'm seeing reality through a tunnel of agony and might be actively vomiting from pain.'",
-      "10: 'I am no longer inhabiting my body. I have astral projected to escape this mortal form.'",
-      "You tap pointedly at the 8-9 region. The resident looks both impressed and uncomfortable.",
-      "'Did you... make this yourself?' he asks.",
-      `'Yes,' you reply. 'Because apparently "on a scale from 1 to 10" doesn't mean the same thing to me as it does to people who think paper cuts and childbirth are comparable experiences.'`
-    ],
-    choices: [
-      { text: 'Elaborate on your symptoms with clinical precision.', nextId: 'clinical_precision' },
-      { text: 'Show him your symptom tracking app.', nextId: 'symptom_app' },
-      { text: 'GO NUCLEAR: Offer to demonstrate your pain level.', nextId: 'nuclear_pain_demo' },
-    ],
   },
   
   nuclear_pain_demo: {
@@ -704,8 +874,40 @@ const storyData: StoryData = {
     ],
     choices: [
       { text: 'Thank him with dignity.', nextId: 'accept_treatment' },
-      { text: 'Document this educational moment.', nextId: 'tiktok_prompt' },
+      { text: 'Document this educational moment.', nextId: 'tiktok_prompt' }
     ],
+    resources: [
+      {
+        title: "Understanding Chronic Pain",
+        url: "https://www.healthline.com/health/chronic-pain"
+      },
+      {
+        title: "Pain Communication Tools",
+        items: [
+          "How to describe pain effectively",
+          "Understanding pain scales",
+          "Advocating for pain management",
+          "Finding pain specialists"
+        ]
+      },
+      {
+        title: "Patient Rights in Pain Management",
+        items: [
+          "Your right to pain relief",
+          "Understanding pain management options",
+          "How to request pain specialists",
+          "Documenting pain experiences"
+        ]
+      },
+      {
+        title: "Chronic Pain Support",
+        url: "https://www.verywellhealth.com/chronic-pain-support"
+      }
+    ],
+    navigation: [
+      { text: '🔁 Start this story over from the beginning', nextId: 'start' },
+      { text: '🏠 Return to Main Menu to pick a different storyline', nextId: 'main_menu' }
+    ]
   },
   
   clean_yourself: {
