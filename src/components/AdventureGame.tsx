@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 interface Choice {
   text: string;
   nextId: string;
+  description?: string;
 }
 
 // Define the structure for a scene
@@ -26,10 +27,24 @@ const storyData: StoryData = {
   start: {
     id: 'start',
     text: [
-      "You wake up feeling like a team of ninjas has been stabbing you in the belly all night, a pain you know too well from your last visit to the ER — the cold, sterile room, the fluorescent lights humming overhead, and the constant, aching reminder that no one seems to believe you're actually suffering.",
-      "The pain becomes unbearable. You can't walk. You're doubled over, gasping, sweat pouring down your face. You plead with your partner to call 911.",
-      "When the paramedics arrive, your partner has to spend twenty minutes convincing them that you're not nine months pregnant and in labor. The bloating is so extreme you look like you've swallowed a basketball. Your skin is stretched tight.",
-      "They try and fail to find a vein. You tell them it's always like this, that you need ultrasound guidance, but they insist. Eventually, they give up and jab you with an intramuscular injection of fentanyl. It hits bone. You scream. The bruising is immediate and deep. You won't be able to lift your arm high enough to put on a shirt for a month."
+      "It didn't start with an ambulance. It started with a year of gaslighting.",
+      "You were a good patient. You went to every appointment, even when you had to leave work early, bike two hours with your stomach in knots, or beg friends for rides. You tolerated it all — the rotating cast of medical residents who never read your chart, the endless loop of 'eat more fiber,' 'take Miralax,' 'do yoga,' and the cherry on top: 'Are you here for drugs?'",
+      "You told them, every time: 'I'm not constipated. I'm an ultramarathon runner. I eat like a vegan wellness influencer. I take everything you prescribe. And I'm still in agony.'",
+      "They nodded sympathetically and prescribed a different flavor of useless.",
+      "You worked at a 3D printing company, finally with decent insurance. Stanford Hospital was twenty minutes away. The GI clinic was walking distance from your job. You thought that meant something.",
+      "It didn't.",
+      "Stanford gave you the same shrugs and suspicion that Medi-Cal did — just with nicer furniture.",
+      "After months of vomiting, bloating so severe none of your clothes fit, and appointments that went nowhere, you stopped hoping. You started surviving. You stayed late in the lab to make up for time lost to vomiting in your car or sprinting to the bathroom mid-client meeting. You popped antiemetics like mints — which you'd been on since middle school, by the way, because this didn't start last year. This started decades ago. No one ever took it seriously.",
+      "Then came the night everything broke.",
+      "You wake up feeling like a team of ninjas has been stabbing you in the belly all night. The pain is relentless — twisting, bloating, pulsing — and you can't tell if it's your intestines or a demon.",
+      "But the pain — the pressure — it felt like you'd swallowed a basketball.",
+      "You couldn't stand. Couldn't walk. Couldn't breathe without crying.",
+      "The pain in your stomach becomes unbearable. You can't walk. You're doubled over, gasping, sweat pouring down your face. You plead with your partner to call 911.",
+      "The paramedics arrived. Professionals, supposedly.",
+      "Your partner has to spend twenty minutes convincing them that you're not nine months pregnant and in labor. The bloating is so extreme you look like you've swallowed a basketball. Your skin is stretched tight — so tight you're surprised you don't burst into stretch marks.",
+      "They try and fail to find a vein. Eventually, they give up and jab you with an intramuscular injection of fentanyl. It hits bone. You scream. The bruising is immediate spreads like a Rorschach test. You wouldn't be able to lift your arm for weeks.",
+      "And finally — finally — they brought you to the ER. Where you learned that the trauma of being believed isn't actually better than the trauma of being ignored.",
+      "Welcome to the ER. Please take a number. And maybe a vomit bag."
     ],
     choices: [
       { text: 'Continue to the ER in the ambulance.', nextId: 'er_arrival_expanded' },
@@ -40,17 +55,76 @@ const storyData: StoryData = {
   escape_ambulance: {
     id: 'escape_ambulance',
     text: [
-      "Somewhere between the botched injection and the paramedic asking if you're 'sure it's not just period cramps,' you decide that medical transportation is not for you today.",
-      "'Pull over!' you demand, with the authority of someone who's been in pain long enough to no longer care about social norms.",
-      "The paramedic looks concerned. 'Ma'am, you really shouldn't—'",
-      "'PULL. OVER.' You're channeling your inner action movie hero now. The ambulance reluctantly stops.",
-      "You slide off the gurney like a dignified jellyfish, flop onto the sidewalk, and begin your heroic crawl back to your apartment, three miles away. The paramedics watch in a mixture of horror and reluctant respect.",
-      "Forty-five minutes later, you're dragging yourself up the stairs using only your eyebrows and sheer spite. Your cat judges you from the landing. Your partner is still on the phone arguing with your insurance about pre-authorizations.",
-      "You make it to the bathroom, collapse majestically on the tile floor, and think, 'At least here, when I'm ignored, I don't have to pay a co-pay for the privilege.'"
+      "🧨 Scene: The Great Ambulance Escape",
+      "You are, technically speaking, lying in an ambulance. But only barely. The moment you're loaded up, things go sideways.",
+      "The EMTs are arguing over your chart—or lack thereof—saying things like 'chronic pain patient' in that tone that's practically a slur, and you catch the glint of a Benadryl-and-Ativan combo being prepped like you're a nuisance to be sedated, not a patient to be helped.",
+      "Then it happens. The older paramedic, who hasn't made eye contact with you once, mutters:",
+      "'This might be behavioral. I mean, there's no trauma.'",
+      "You snap.",
+      "'I'm not going. Stop the ambulance. I want out.'",
+      "There's a pause. Then a sigh. The ambulance pulls into a gas station. You're told you'll need to sign an Against Medical Advice (AMA) form before they can legally let you out. You scribble something between a middle finger and a squiggle and immediately regret it—but not as much as you're about to regret everything else.",
+      "They unload you and leave you curled like a shrimp on the cold curb outside the convenience store. You can't walk. You're in too much pain to even sit upright. A stray soda can rolls toward your shoe, taps it gently, and continues its journey with more dignity than you currently possess.",
+      "You open your phone with trembling hands. And now comes the worst part: asking for help.",
+      "",
+      "📚 Resources:",
+      "• Refusing Ambulance Transport: What You Need to Know",
+      "• Sick Together: Coping When Both Partners Have Chronic Illness",
+      "",
+      "💡 Sample scripts for next time:",
+      "• 'I need a medically safe way to get to the ER, but I can't tolerate the ambulance ride. Can we pause and problem-solve together?'",
+      "• 'Please document my refusal was due to feeling unsafe, not that I don't need emergency care.'"
     ],
     choices: [
-      { text: 'Reconsider and call an Uber to the ER.', nextId: 'er_arrival_expanded' },
-      { text: 'Stay home and suffer in comfort.', nextId: 'home_suffering' },
+      { 
+        text: '🚕 Call an Uber', 
+        nextId: 'uber_ride',
+        description: "You brace yourself for the Everest-level challenge of getting into a car with roiling upper gastric pain, nausea, and the spinal flexibility of a mannequin. But worse—far worse—is the quiet heartbreak of watching your partner, who can barely walk or sit, force himself into his own car to trail you. He can't ride in an Uber; the seats are wrong, the angles are wrong, the world is wrong. His own car is tricked out with ergonomic cushions, special mirrors, and the faint scent of medicinal despair. He'll follow you to the hospital. He'll sit in the parking lot with a heat pad, probably crying silently, and you'll pretend you don't notice. But tomorrow—or next week, or forever—he'll be down with a new flare. Maybe in his shoulders this time. Maybe his jaw. Maybe a brand-new 'hot spot' that never goes away. But hey—you got your ride."
+      },
+      { 
+        text: '🚗 Ask your partner to drive you', 
+        nextId: 'partner_drive',
+        description: "You don't want to. You really don't want to. But you call anyway, and he picks up after one ring, already worried. The drive is less than 15 minutes but feels like a death march. He helps you down the front steps, one arm trembling against yours, the other hand braced against the car door like he's holding up a collapsing building. You watch the pain flicker across his face as he opens the passenger side. You try not to scream while folding your body into the seat. Both of you pretend you're fine. By the time you get to the ER, he's soaked in sweat and shaking. You try to reassure him. He nods. Neither of you believe it."
+      },
+      {
+        text: '🔄 Start over',
+        nextId: 'start'
+      }
+    ],
+  },
+  
+  uber_ride: {
+    id: 'uber_ride',
+    text: [
+      "🚕 The Uber Ride",
+      "The Uber driver takes one look at you and immediately regrets accepting the ride. You're pale, sweating, and curled into a fetal position in the backseat.",
+      "'You okay back there?' he asks, eyeing you in the rearview mirror.",
+      "You manage a weak 'mhm' between clenched teeth.",
+      "The ride is agony. Every bump, every turn, every stop sends waves of pain through your abdomen. You focus on your breathing, trying not to vomit in this stranger's car.",
+      "Your partner follows behind in his specially modified car, his own pain written across his face in the rearview mirror.",
+      "When you finally arrive at the ER, the Uber driver practically jumps out to open your door, eager to be rid of you. You stumble out, barely able to stand, while your partner parks his car and limps over to help you inside.",
+      "The automatic doors slide open, revealing the fluorescent-lit purgatory of the emergency room. A bored-looking receptionist glances up from her computer.",
+      "'Take a number,' she says, gesturing to the dispenser. 'And maybe a vomit bag.'"
+    ],
+    choices: [
+      { text: 'Take a number and wait.', nextId: 'er_arrival_expanded' },
+      { text: 'Try to explain your situation to the receptionist.', nextId: 'receptionist_conversation' }
+    ],
+  },
+
+  partner_drive: {
+    id: 'partner_drive',
+    text: [
+      "🚗 The Partner Drive",
+      "The drive to the ER is a silent symphony of pain. Your partner's knuckles are white on the steering wheel, his jaw clenched against his own discomfort.",
+      "You try to find a position that doesn't make you want to scream. There isn't one.",
+      "The car is filled with the scent of his various pain creams and the sound of both of you trying not to cry.",
+      "When you arrive, he helps you out of the car, his movements stiff and careful. You lean on each other, two broken people trying to hold each other up.",
+      "The automatic doors slide open, revealing the fluorescent-lit purgatory of the emergency room. A bored-looking receptionist glances up from her computer.",
+      "'Take a number,' she says, gesturing to the dispenser. 'And maybe a vomit bag.'"
+    ],
+    choices: [
+      { text: 'Take a number and wait.', nextId: 'er_arrival_expanded' },
+      { text: 'Try to explain your situation to the receptionist.', nextId: 'receptionist_conversation' }
     ],
   },
   
