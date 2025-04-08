@@ -1,0 +1,438 @@
+{
+  "start": {
+    "id": "start",
+    "text": [
+      "🧨 Scene: Welcome to the ER — Please Take a Number",
+      "It didn't start with an ambulance. It started with a year of gaslighting.",
+      "You were a good patient. You went to every appointment, even when you had to leave work early, bike two hours with your stomach in knots, or beg friends for rides. You tolerated it all — the rotating cast of medical residents who never read your chart, the endless loop of 'eat more fiber,' 'take Miralax,' 'do yoga,' and the cherry on top: 'Are you here for drugs?'",
+      "You told them, every time: 'This is NOT a case of IBS. I'm an ultramarathon runner. I eat like a vegan wellness influencer. I've taken everything you've prescribe - multiple times - as written. And I'm still in agony.'",
+      "They nodded sympathetically and prescribed a different flavor of useless.",
+      "You worked at a 3D printing company, finally with decent insurance. Stanford Hospital was twenty minutes away. The GI clinic was walking distance from your job. You thought that meant something.",
+      "It didn't.",
+      "Stanford gave you the same shrugs and suspicion that Medi-Cal did — just with nicer furniture.",
+      "After months of vomiting, bloating so severe none of your clothes fit, and appointments that went nowhere, you stopped hoping. You started surviving. You stayed late in the lab to make up for time lost to vomiting in your car or sprinting to the bathroom mid-client meeting. You popped antiemetics like mints — which you'd been on since middle school, by the way, because this didn't start last year. This started decades ago. No one ever took it seriously.",
+      "Rather than sympathy and help, fighting the urge not to throw up in the middle of meetings (and often failing) earned you the label of 'unreliable employee'. It's not long before your b*tch of a boss puts you on an extensive PIP for <gasp!> fighting a serious and life-threatening chronic illness.",
+      "Then came the night everything broke.",
+      "You wake up feeling like a team of ninjas has been stabbing you in the belly all night. The pain is relentless — twisting, bloating, pulsing — and you can't tell if it's your intestines or a demon.",
+      "But the pain — the pressure — it felt like you'd swallowed a basketball.",
+      "You couldn't stand. Couldn't walk. Couldn't breathe without crying.",
+      "The pain in your stomach becomes unbearable. You can't walk. You're doubled over, gasping, sweat pouring down your face. You plead with your partner to call 911.",
+      "The paramedics arrived. Professionals, supposedly.",
+      "Your partner has to spend twenty minutes convincing them that you're not nine months pregnant and in labor. The bloating is so extreme you look like you've swallowed a basketball. Your skin is stretched tight — so tight you're surprised you don't burst into stretch marks."
+    ],
+    "choices": [
+      { "text": "🚑 Continue to the ER in the ambulance", "nextId": "er_arrival_expanded" },
+      { "text": "🛑 Escape the ambulance and go back home", "nextId": "escape_ambulance" }
+    ],
+    "resources": [
+      {
+        "title": "Understanding Medical Gaslighting",
+        "url": "https://www.healthline.com/health/medical-gaslighting"
+      },
+      {
+        "title": "Chronic Illness and Medical Trauma",
+        "url": "https://www.psychologytoday.com/us/blog/the-truth-about-exercise-addiction/201808/chronic-illness-and-medical-trauma"
+      },
+      {
+        "title": "Patient Advocacy Resources",
+        "items": [
+          "How to Document Your Symptoms Effectively",
+          "Questions to Ask Your Healthcare Provider",
+          "Understanding Your Rights as a Patient"
+        ]
+      }
+    ],
+    "navigation": [
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu to pick a different storyline", "nextId": "main_menu" }
+    ]
+  },
+  "er_arrival_expanded": {
+    "id": "er_arrival_expanded",
+    "text": [
+      "🚑 Scene: ER Arrival — The Waiting Game Begins",
+      "The ambulance ride is a blur of pain and humiliation. The paramedics keep asking if you're sure you're not pregnant, despite your partner's repeated explanations. You're too weak to argue.",
+      "At the ER, you're wheeled into a crowded waiting room. The triage nurse barely glances at you before handing you a clipboard. 'Fill this out,' she says, already turning to the next patient.",
+      "You try to explain your symptoms, but the words come out in gasps. The pain is so intense you can barely speak. Your partner steps in, describing your history and current condition.",
+      "The nurse nods, takes your vitals, and says, 'We'll get to you as soon as possible.'",
+      "You're left in the waiting room, surrounded by people with various ailments. Some look at you with sympathy, others with annoyance. The clock ticks slowly as your pain continues to worsen."
+    ],
+    "choices": [
+      { "text": "😫 Wait patiently for your turn", "nextId": "waiting_game" },
+      { "text": "🚨 Demand immediate attention", "nextId": "demand_attention" }
+    ],
+    "resources": [
+      {
+        "title": "Understanding ER Triage",
+        "url": "https://www.healthline.com/health/er-triage"
+      },
+      {
+        "title": "How to Advocate for Yourself in the ER",
+        "items": [
+          "Bring a list of your medications",
+          "Have your medical history ready",
+          "Bring a support person if possible",
+          "Know your rights as a patient"
+        ]
+      }
+    ],
+    "navigation": [
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu to pick a different storyline", "nextId": "main_menu" }
+    ]
+  },
+  "waiting_game": {
+    "id": "waiting_game",
+    "text": [
+      "⏳ Scene: The Waiting Game — Hours Pass",
+      "Hours pass. The pain is unbearable, but you try to stay calm. You watch as patients who arrived after you are called back. Some look less urgent than your case, but you remind yourself that appearances can be deceiving.",
+      "Your partner grows increasingly frustrated, pacing the waiting room. They try to approach the desk several times, but are told to wait.",
+      "Finally, after what feels like an eternity, your name is called. A nurse leads you to a small exam room. The doctor arrives shortly after, looking tired but attentive.",
+      "You explain your symptoms again, this time in more detail. The doctor listens carefully, asks questions, and orders some tests."
+    ],
+    "choices": [
+      { "text": "🩺 Cooperate with the tests", "nextId": "tests_begin" },
+      { "text": "❓ Ask more questions about the tests", "nextId": "question_tests" }
+    ],
+    "resources": [
+      {
+        "title": "Understanding ER Wait Times",
+        "url": "https://www.healthline.com/health/er-wait-times"
+      },
+      {
+        "title": "Coping with Long Wait Times",
+        "items": [
+          "Bring comfort items",
+          "Keep a symptom journal",
+          "Practice mindfulness",
+          "Have a support person"
+        ]
+      }
+    ],
+    "navigation": [
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu to pick a different storyline", "nextId": "main_menu" }
+    ]
+  },
+  "escape_ambulance": {
+    "id": "escape_ambulance",
+    "text": [
+      "🏃‍♀️ Scene: Escape from the Ambulance",
+      "You can't take it anymore. The pain is unbearable, but the thought of another dismissive ER visit is even worse.",
+      "You whisper to your partner, 'I can't do this. Not again. Not today.'",
+      "They understand immediately. They've seen this before - the endless cycle of ER visits that lead nowhere.",
+      "As the ambulance slows at a red light, you make your move. The paramedics are distracted, chatting about their weekend plans.",
+      "Your partner helps you out of the ambulance, and together you make a quick escape. The paramedics don't even notice until you're already halfway down the block.",
+      "You limp home, each step agony, but at least you're free from another round of medical gaslighting."
+    ],
+    "choices": [
+      { "text": "🏠 Go home and try to rest", "nextId": "home_suffering" },
+      { "text": "📱 Document the experience on TikTok", "nextId": "home_tiktok" }
+    ],
+    "resources": [
+      {
+        "title": "When to Go to the ER vs. When to Stay Home",
+        "url": "https://www.healthline.com/health/when-to-go-to-er"
+      },
+      {
+        "title": "Managing Chronic Pain at Home",
+        "items": [
+          "Creating a comfortable environment",
+          "Self-care techniques",
+          "When to seek emergency care",
+          "Managing pain without medication"
+        ]
+      }
+    ],
+    "navigation": [
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu to pick a different storyline", "nextId": "main_menu" }
+    ]
+  },
+  "home_suffering": {
+    "id": "home_suffering",
+    "text": [
+      "🏠 Scene: Home Sweet Home (Not Really)",
+      "You make it home, barely. The pain is still there, but at least you're in your own space.",
+      "Your partner helps you into bed, tucking you in with your heating pad and favorite blanket.",
+      "You try to find a comfortable position, but it's impossible. The pain is everywhere.",
+      "Your partner brings you water and your medications, but you know they won't help. They never do.",
+      "You close your eyes, trying to focus on your breathing. Maybe if you can just get through this wave of pain...",
+      "But deep down, you know this is just another day in the endless cycle of suffering."
+    ],
+    "choices": [
+      { "text": "😴 Try to sleep through the pain", "nextId": "sleep_ending" },
+      { "text": "📱 Document your experience on social media", "nextId": "home_tiktok" }
+    ],
+    "resources": [
+      {
+        "title": "Coping with Chronic Pain at Home",
+        "url": "https://www.healthline.com/health/chronic-pain/coping-strategies"
+      },
+      {
+        "title": "Self-Care for Chronic Illness",
+        "items": [
+          "Creating a comfortable environment",
+          "Managing pain without medication",
+          "When to seek emergency care",
+          "Building a support system"
+        ]
+      }
+    ],
+    "navigation": [
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu to pick a different storyline", "nextId": "main_menu" }
+    ]
+  },
+  "home_tiktok": {
+    "id": "home_tiktok",
+    "text": [
+      "📱 Scene: TikTok Therapy",
+      "You pull out your phone, despite the pain. Maybe if you can make people laugh about this nightmare...",
+      "You start recording: 'POV: When you escape the ambulance because you know the ER will just gaslight you again...'",
+      "The video goes viral. Thousands of comments pour in from people who understand exactly what you're going through.",
+      "For the first time in a long time, you don't feel alone. The chronic illness community rallies around you.",
+      "Your pain is still there, but at least now you have a voice. And people are listening.",
+      "Just as you're about to end the recording, your cat, Mr. Whiskers, jumps onto your lap. He's been your constant companion through all of this."
+    ],
+    "choices": [
+      { "text": "🐱 Include Mr. Whiskers in your content", "nextId": "cat_intro" },
+      { "text": "🌟 Focus on patient advocacy", "nextId": "influencer_ending" }
+    ],
+    "resources": [
+      {
+        "title": "Chronic Illness Community on Social Media",
+        "url": "https://www.healthline.com/health/chronic-illness/online-communities"
+      },
+      {
+        "title": "Using Humor to Cope with Chronic Illness",
+        "items": [
+          "Finding your voice",
+          "Building community",
+          "Setting boundaries",
+          "Self-care tips"
+        ]
+      }
+    ],
+    "navigation": [
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu to pick a different storyline", "nextId": "main_menu" }
+    ]
+  },
+  "sleep_ending": {
+    "id": "sleep_ending",
+    "text": [
+      "😴 Scene: The End (For Now)",
+      "You drift off to sleep, exhausted from the day's ordeal.",
+      "The pain is still there, but sleep offers a temporary escape.",
+      "Tomorrow will be another day. Another battle. Another chance to fight for your health.",
+      "But for now, you rest. You've earned it."
+    ],
+    "isEnding": true,
+    "resources": [
+      {
+        "title": "Sleep and Chronic Pain",
+        "url": "https://www.healthline.com/health/chronic-pain/sleep"
+      },
+      {
+        "title": "Managing Chronic Illness Day by Day",
+        "items": [
+          "Setting realistic expectations",
+          "Celebrating small victories",
+          "Building a support network",
+          "Prioritizing self-care"
+        ]
+      }
+    ],
+    "navigation": [
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu to pick a different storyline", "nextId": "main_menu" }
+    ]
+  },
+  "influencer_ending": {
+    "id": "influencer_ending",
+    "text": [
+      "🌟 Scene: Finding Your Voice",
+      "Your TikTok about escaping the ambulance goes viral. Thousands of people share their own stories of medical gaslighting.",
+      "You start a series called 'Chronic Illness Chronicles' where you document your journey with humor and honesty.",
+      "Your platform grows. You connect with other chronic illness warriors. You become a voice for those who are too sick to speak up.",
+      "The medical system hasn't changed, but you've found a way to fight back. Through community. Through storytelling. Through making people laugh at the absurdity of it all.",
+      "Your pain is still there, but now you're not alone. And that makes all the difference."
+    ],
+    "isEnding": true,
+    "resources": [
+      {
+        "title": "Building a Supportive Online Community",
+        "url": "https://www.healthline.com/health/chronic-illness/online-communities"
+      },
+      {
+        "title": "Patient Advocacy Through Social Media",
+        "items": [
+          "Sharing your story safely",
+          "Building community",
+          "Setting boundaries",
+          "Finding support"
+        ]
+      }
+    ],
+    "navigation": [
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu to pick a different storyline", "nextId": "main_menu" }
+    ]
+  },
+  "cat_intro": {
+    "id": "cat_intro",
+    "text": [
+      "🐱 Scene: The Cat Who Knows",
+      "As you're recording your latest TikTok about medical gaslighting, your cat, Mr. Whiskers, jumps onto your lap.",
+      "He's been your constant companion through all of this - the late-night pain, the endless doctor visits, the times you've been too sick to move.",
+      "He purrs loudly, kneading your stomach gently. Somehow, he always knows exactly where it hurts.",
+      "You start a new series: 'Chronic Illness Cat Chronicles' - where Mr. Whiskers helps explain medical terms and procedures in cat language."
+    ],
+    "choices": [
+      { "text": "📱 Make Mr. Whiskers a co-host", "nextId": "cat_cohost" },
+      { "text": "😴 Take a nap with your feline nurse", "nextId": "cat_nap" }
+    ],
+    "resources": [
+      {
+        "title": "Pets and Chronic Illness",
+        "url": "https://www.healthline.com/health/chronic-illness/pets"
+      },
+      {
+        "title": "Emotional Support Animals",
+        "items": [
+          "Benefits of pet companionship",
+          "How pets sense illness",
+          "Caring for pets while chronically ill",
+          "ESA certification process"
+        ]
+      }
+    ],
+    "navigation": [
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu to pick a different storyline", "nextId": "main_menu" }
+    ]
+  },
+  "cat_cohost": {
+    "id": "cat_cohost",
+    "text": [
+      "🎬 Scene: Mr. Whiskers Takes Center Stage",
+      "Your 'Chronic Illness Cat Chronicles' series becomes a hit. Mr. Whiskers, with his perfect timing and expressive face, helps explain complex medical concepts.",
+      "In one episode, he demonstrates 'brain fog' by pretending to forget where he put his favorite toy. In another, he shows 'spoon theory' by carefully rationing his energy for playtime.",
+      "Your followers love it. They start sharing their own pet stories and how their animals help them cope with chronic illness.",
+      "You even get featured in a major chronic illness publication: 'How One Woman and Her Cat Are Changing the Narrative Around Medical Gaslighting'"
+    ],
+    "choices": [
+      { "text": "🌟 Start a pet therapy program", "nextId": "pet_therapy" },
+      { "text": "📚 Write a book with Mr. Whiskers", "nextId": "cat_book" }
+    ],
+    "resources": [
+      {
+        "title": "Pet Therapy for Chronic Illness",
+        "url": "https://www.healthline.com/health/pet-therapy"
+      },
+      {
+        "title": "Creating Content with Pets",
+        "items": [
+          "Pet safety on camera",
+          "Engaging your audience",
+          "Balancing pet care and content creation",
+          "Monetizing pet content"
+        ]
+      }
+    ],
+    "navigation": [
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu to pick a different storyline", "nextId": "main_menu" }
+    ]
+  },
+  "pet_therapy": {
+    "id": "pet_therapy",
+    "text": [
+      "🐾 Scene: Paws for Healing",
+      "You start a program called 'Paws for Healing' where you match therapy cats with chronic illness patients.",
+      "Mr. Whiskers becomes the program's mascot, visiting hospitals and clinics to demonstrate how pets can help with pain management and emotional support.",
+      "Your program grows, and soon you're working with local shelters to train cats as therapy animals specifically for chronic illness patients.",
+      "You even get invited to speak at medical conferences about the benefits of pet therapy in chronic illness care."
+    ],
+    "isEnding": true,
+    "resources": [
+      {
+        "title": "Starting a Pet Therapy Program",
+        "url": "https://www.healthline.com/health/pet-therapy/program"
+      },
+      {
+        "title": "Therapy Animal Training",
+        "items": [
+          "Certification requirements",
+          "Training techniques",
+          "Working with shelters",
+          "Program funding"
+        ]
+      }
+    ],
+    "navigation": [
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu to pick a different storyline", "nextId": "main_menu" }
+    ]
+  },
+  "cat_book": {
+    "id": "cat_book",
+    "text": [
+      "📚 Scene: The Cat Who Changed Healthcare",
+      "You and Mr. Whiskers write a book: 'The Cat Who Knew Too Much: A Feline's Guide to Surviving Chronic Illness'.",
+      "The book becomes a bestseller, combining your personal story with Mr. Whiskers' unique perspective on healthcare.",
+      "You go on a book tour, with Mr. Whiskers making special appearances at bookstores and hospitals.",
+      "Your story inspires a movement - #CatsAgainstGaslighting trends on social media, with people sharing how their pets have helped them navigate the medical system."
+    ],
+    "isEnding": true,
+    "resources": [
+      {
+        "title": "Writing About Chronic Illness",
+        "url": "https://www.healthline.com/health/chronic-illness/writing"
+      },
+      {
+        "title": "Publishing Your Story",
+        "items": [
+          "Finding a publisher",
+          "Self-publishing options",
+          "Marketing your book",
+          "Building an author platform"
+        ]
+      }
+    ],
+    "navigation": [
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu to pick a different storyline", "nextId": "main_menu" }
+    ]
+  },
+  "cat_nap": {
+    "id": "cat_nap",
+    "text": [
+      "😴 Scene: The Healing Power of Purrs",
+      "You and Mr. Whiskers curl up together for a nap. His purring vibrations seem to soothe your pain, if only temporarily.",
+      "As you drift off, you think about how much he's helped you through this journey. His unconditional love and understanding have been more healing than any medication.",
+      "You wake up feeling a bit better, with Mr. Whiskers still purring on your chest. Maybe today will be a good day."
+    ],
+    "isEnding": true,
+    "resources": [
+      {
+        "title": "The Science of Cat Purring",
+        "url": "https://www.healthline.com/health/cat-purring"
+      },
+      {
+        "title": "Rest and Chronic Illness",
+        "items": [
+          "The importance of sleep",
+          "Creating a restful environment",
+          "Managing pain during rest",
+          "Setting boundaries around rest"
+        ]
+      }
+    ],
+    "navigation": [
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu to pick a different storyline", "nextId": "main_menu" }
+    ]
+  }
+} 
