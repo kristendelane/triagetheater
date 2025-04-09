@@ -21,8 +21,6 @@
       "Your partner has to spend twenty minutes convincing them that you're not nine months pregnant and in labor. The bloating is so extreme you look like you've swallowed a basketball. Your skin is stretched tight — so tight you're surprised you don't burst into stretch marks."
     ],
     "choices": [
-      { "text": "🗣️ Speak up about your treatment", "nextId": "confrontation" },
-      { "text": "😶 Stay silent and wait it out", "nextId": "waiting_game" },
       { "text": "🚑 Continue to the ER in the ambulance", "nextId": "er_arrival_expanded" },
       { "text": "🛑 Escape the ambulance and go back home", "nextId": "escape_ambulance" }
     ],
@@ -45,7 +43,8 @@
       }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   },
   "er_arrival_expanded": {
@@ -78,7 +77,8 @@
       }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   },
   "waiting_game": {
@@ -112,7 +112,8 @@
       }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   },
   "escape_ambulance": {
@@ -146,7 +147,8 @@
       }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   },
   "home_suffering": {
@@ -180,7 +182,8 @@
       }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   },
   "home_tiktok": {
@@ -216,7 +219,8 @@
       }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   },
   "influencer_beginning": {
@@ -252,7 +256,8 @@
       }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   },
   "influencer_growth": {
@@ -288,7 +293,8 @@
       }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   },
   "influencer_ending": {
@@ -321,7 +327,8 @@
       }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   },
   "cat_nap": {
@@ -349,7 +356,8 @@
       }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   },
   "sleep_ending": {
@@ -378,7 +386,8 @@
       }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   },
   "confrontation": {
@@ -399,7 +408,8 @@
       }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   },
   "supervisor_escalation": {
@@ -416,7 +426,8 @@
       { "text": "🚽 Ask about bathroom access", "nextId": "bathroom_dilemma" }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   },
   "discharged_in_frustration": {
@@ -432,7 +443,8 @@
       { "text": "🏠 Just go home", "nextId": "home_suffering" }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   },
   "bathroom_dilemma": {
@@ -467,7 +479,8 @@
       }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   },
   "help_please": {
@@ -483,7 +496,8 @@
       { "text": "😔 Try to clean up alone", "nextId": "mri_experience" }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   },
   "risky_escape": {
@@ -499,7 +513,8 @@
       { "text": "📱 Document the experience", "nextId": "home_tiktok" }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   },
   "mri_experience": {
@@ -536,7 +551,8 @@
       }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   },
   "uber_refusal": {
@@ -553,7 +569,8 @@
       { "text": "😔 Break down crying", "nextId": "the_rescue" }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   },
   "the_rescue": {
@@ -590,7 +607,8 @@
       }
     ],
     "navigation": [
-      { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
+      { "text": "🔁 Start this story over from the beginning", "nextId": "start" },
+      { "text": "🏠 Return to Main Menu (More stories coming soon!)", "nextId": "start", "comingSoon": true }
     ]
   }
 } 
