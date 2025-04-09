@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "required": ["id", "text"],
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "Unique identifier for the scene"
+      },
+      "text": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Array of text paragraphs for the scene"
+      },
+      "choices": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["text", "nextId"],
+          "properties": {
+            "text": {
+              "type": "string",
+              "description": "Text for the choice button"
+            },
+            "nextId": {
+              "type": "string",
+              "description": "ID of the next scene"
+            }
+          }
+        }
+      },
+      "resources": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["title"],
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "navigation": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["text", "nextId"],
+          "properties": {
+            "text": {
+              "type": "string"
+            },
+            "nextId": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "isEnding": {
+        "type": "boolean"
+      }
+    }
+  }
+} 

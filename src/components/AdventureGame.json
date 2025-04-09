@@ -447,6 +447,25 @@
       { "text": "🔔 Ring for help", "nextId": "help_please" },
       { "text": "🏃‍♀️ Try to go anyway", "nextId": "risky_escape" }
     ],
+    "resources": [
+      {
+        "title": "Hospital Patient Rights",
+        "url": "https://www.medicare.gov/claims-appeals/your-medicare-rights/hospital-patient-rights"
+      },
+      {
+        "title": "Dignity in Healthcare",
+        "url": "https://www.healthline.com/health/patient-dignity"
+      },
+      {
+        "title": "Managing Medical Trauma",
+        "items": [
+          "Coping with medical PTSD",
+          "Finding support groups",
+          "Self-advocacy techniques",
+          "Documentation strategies"
+        ]
+      }
+    ],
     "navigation": [
       { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
     ]
@@ -497,6 +516,25 @@
       { "text": "🚕 Try to get an Uber home", "nextId": "uber_refusal" },
       { "text": "📱 Call your partner", "nextId": "the_rescue" }
     ],
+    "resources": [
+      {
+        "title": "Understanding MRI Procedures",
+        "url": "https://www.radiologyinfo.org/en/info/mri-rectum"
+      },
+      {
+        "title": "Patient Rights During Medical Procedures",
+        "url": "https://www.patientrights.org"
+      },
+      {
+        "title": "Preparing for Medical Imaging",
+        "items": [
+          "What to expect during contrast imaging",
+          "Your right to stop a procedure",
+          "Questions to ask before the procedure",
+          "Post-procedure care"
+        ]
+      }
+    ],
     "navigation": [
       { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
     ]
@@ -531,6 +569,25 @@
     "choices": [
       { "text": "😴 Rest at home", "nextId": "sleep_ending" },
       { "text": "📱 Share your story", "nextId": "home_tiktok" }
+    ],
+    "resources": [
+      {
+        "title": "Supporting a Partner with Chronic Illness",
+        "url": "https://www.psychologytoday.com/us/blog/chronically-me/202102/supporting-partner-chronic-illness"
+      },
+      {
+        "title": "Caregiver Resources",
+        "url": "https://www.caregiver.org/resource/taking-care-you-self-care-family-caregivers"
+      },
+      {
+        "title": "Building a Support System",
+        "items": [
+          "Communication strategies for couples",
+          "Balancing caregiving and self-care",
+          "Finding local support groups",
+          "Creating emergency care plans"
+        ]
+      }
     ],
     "navigation": [
       { "text": "🔁 Start this story over from the beginning", "nextId": "start" }
