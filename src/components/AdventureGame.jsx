@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import storyData from './AdventureGame.json';
+import storyData from '../Story-Data/welcome_to_er_scene.json';
 
 export default function AdventureGame() {
   const [currentSceneId, setCurrentSceneId] = useState('start');

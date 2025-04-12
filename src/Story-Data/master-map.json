@@ -1,0 +1,17 @@
+Code language not supported or defined.Code language not supported or defined.Code language not supported or defined.{
+  "start": {
+    "file": "welcome_to_er_scene.json",
+    "title": "\ud83e\udde8 Welcome to the ER \u2014 Please Take a Number",
+    "choices": {
+      "\ud83d\ude91 Let the Sadist Squad roll you into the ER": "er_arrival_expanded",
+      "\ud83d\udcf1 Start a TikTok while literally dying": "tiktok_waiting_exposed",
+      "\ud83e\uddd3 Talk to Gladys, who\u2019s been waiting even longer": "meet_gladys",
+      "\ud83d\udce2 Try to advocate for yourself like a polite, reasonable adult": "early_confrontation",
+      "\ud83d\udeaa Refuse the ambulance and hobble home like a medieval peasant": "ambulance_refusal"
+    },
+    "navigation": {
+      "restart": "start",
+      "main_menu": "main_menu"
+    }
+  }
+}

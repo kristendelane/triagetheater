@@ -1,0 +1,32 @@
+{
+    "id": "crime_scene_phlebotomist",
+    "text": [
+      "🩸 Scene: Crime Scene Phlebotomist",
+      "You explain (again) that you need ultrasound for IVs. “Nah, I got this,” says the phlebotomist, already stabbing like he’s at an Olive Garden on free breadstick night. Three failed jabs and one soggy chux pad later, he vanishes, and your veins go into witness protection."
+    ],
+    "choices": [
+      {
+        "text": "😡 Demand a nurse who actually knows what they’re doing",
+        "nextId": "ultrasound_iv_nurse"
+      },
+      {
+        "text": "🩸 Bleed quietly and suppress the urge to scream",
+        "nextId": "waiting_game"
+      }
+    ],
+    "resources": [
+      {
+        "title": "How to Request Ultrasound IV Access",
+        "items": [
+          "Explain your vein history early",
+          "Request a nurse trained in vascular access",
+          "Document failed attempts (time, name, location)"
+        ]
+      }
+    ],
+    "navigation": [
+      { "text": "🔁 Restart story", "nextId": "start" },
+      { "text": "🏠 Return to main menu", "nextId": "main_menu" }
+    ]
+  }
+  

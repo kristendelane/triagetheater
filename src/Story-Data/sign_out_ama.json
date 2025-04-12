@@ -1,0 +1,26 @@
+{
+    "id": "sign_out_ama",
+    "text": [
+      "You hit your limit. Again. The note says 'combative' now, as if crying and not wanting to be groped by a disrespectful transport tech makes you a threat.",
+      "The meds aren’t helping. The call button may as well be connected to a black hole. You haven’t been rounded on in three days.",
+      "You ask for the AMA form. The nurse doesn’t fight it. She just sighs and prints it out.",
+      "You sign with a shaky hand, then begin the ritual: unplugging, untaping, unhooking. You dress yourself in a stained hoodie from the bottom of your ER go-bag and shove what remains of your dignity in your tote.",
+      "Before leaving, you glance at the bin of unused supplies. You reach in and grab what you can — IV tubing, pulse ox clips, chucks pads — and shove them under the pile of trash, like a protest offering.",
+      "They don’t even notice when you leave. No one follows. No one checks. You disappear into the night like you were never there."
+    ],
+    "choices": [
+      {
+        "text": "🧼 Go home and try to shower the trauma off.",
+        "nextId": "home_recovery_fail"
+      },
+      {
+        "text": "📲 Post a TikTok titled 'POV: You signed out AMA and took the pulse ox as revenge.'",
+        "nextId": "tiktok_pulse_ox_revenge"
+      },
+      {
+        "text": "🧠 Spiral and wonder if you should’ve just stayed.",
+        "nextId": "gaslight_self_loop"
+      }
+    ]
+  }
+  

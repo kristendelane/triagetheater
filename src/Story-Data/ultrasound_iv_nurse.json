@@ -1,0 +1,35 @@
+{
+    "id": "ultrasound_iv_nurse",
+    "text": [
+      "🧑‍⚕️ Scene: The IV Whisperer Arrives",
+      "Finally, after the last guy turned your arm into a Jackson Pollock painting, a nurse appears with the words you’ve been dying to hear:",
+      "'Hi, I’m here to do an ultrasound-guided IV.'",
+      "You cry a little. She pretends not to notice. In seconds, it's in. Flawless. Like butter. She even tapes it gently, like you’re not already covered in failed pokes.",
+      "She leaves. You whisper, 'Marry me.'"
+    ],
+    "choices": [
+      {
+        "text": "🛏️ Hope this means you're getting a bed now",
+        "nextId": "maybe_admitted"
+      },
+      {
+        "text": "🏠 Screw this, go home and suffer alone",
+        "nextId": "home_suffering"
+      }
+    ],
+    "resources": [
+      {
+        "title": "Tips for Securing Ultrasound IVs Early",
+        "items": [
+          "Request early if you’ve needed it before",
+          "Mention past failed sticks upfront",
+          "Ask for vascular access team, not random techs"
+        ]
+      }
+    ],
+    "navigation": [
+      { "text": "🔁 Restart story", "nextId": "start" },
+      { "text": "🏠 Return to main menu", "nextId": "main_menu" }
+    ]
+  }
+  

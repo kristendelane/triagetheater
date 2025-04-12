@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import gameData from './AdventureGame.json';
+import storyData from '../Story-Data/welcome_to_the_er-please_take_a_number.json';
 
 interface Choice {
   text: string;

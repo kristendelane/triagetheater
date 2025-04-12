@@ -1,0 +1,50 @@
+{
+    "start": {
+      "id": "start",
+      "text": [
+        "You wake up in pain...",
+        "Everything hurts. Your stomach feels like it’s being hollowed out by a gremlin with a scalpel and abandonment issues."
+      ],
+      "choices": [
+        { "text": "Call 911", "nextId": "ambulance_arrives" },
+        { "text": "Try to crawl to the bathroom", "nextId": "bathroom_crawl" }
+      ]
+    },
+  
+    "ambulance_arrives": {
+      "id": "ambulance_arrives",
+      "text": [
+        "The EMTs arrive and immediately start asking if you're pregnant. You’re not.",
+        "They fail to get an IV, then jab you with fentanyl so hard it hits bone. You scream.",
+        "You start to question all your life choices that led to this moment."
+      ],
+      "choices": [
+        { "text": "Refuse transport and crawl home", "nextId": "escape_ambulance" },
+        { "text": "Continue to the ER", "nextId": "er_arrival" }
+      ]
+    },
+  
+    "bathroom_crawl": {
+      "id": "bathroom_crawl",
+      "text": [
+        "You make it halfway to the toilet before collapsing. Your cat stares at you like you're ruining its vibe.",
+        "You vomit bile, miss the bucket, and pass out on the floor. You wake up an hour later in a pool of regret and cat hair."
+      ],
+      "choices": [
+        { "text": "Finally call 911", "nextId": "ambulance_arrives" }
+      ]
+    },
+  
+    "er_arrival": {
+      "id": "er_arrival",
+      "text": [
+        "You arrive at the ER and are told to take a number. It's 137. The screen reads 22.",
+        "A child with a broken arm gets in before you. A man with a nosebleed is called next. You begin to question the space-time continuum."
+      ],
+      "choices": [
+        { "text": "Document the absurdity on TikTok", "nextId": "viral_hit" },
+        { "text": "Wait quietly and crochet a rage blanket", "nextId": "waiting_game" }
+      ]
+    }
+  }
+  

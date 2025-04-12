@@ -1,0 +1,46 @@
+
+{
+    "id": "medical_ping_pong_loop",
+    "text": [
+      "It started the way it always did — slow, quiet, brutal. Three days curled in a ball, fetal position, vomiting everything you touched. Even water wouldn't stay down. The pain gnawed through your spine, your gut, your sanity. You hadn’t showered in days. You smelled like roadkill dipped in sewer water, and didn’t even care.",
+      "A single bite of yogurt sent you to the bathroom floor, retching, shaking, crying. Your partner looked at you, already knowing the answer. “Do you think it’s time to go to the ER again?” You nodded. You already had a go-bag packed — who doesn't, when they end up in the ER every few days?",
+      "You unwrapped a heating belt and handed it to him. You knew he'd need it. The ER waiting room floor was hard, cold, and filthy. But that’s where he’d be — because his body couldn’t sit in those chairs without flaring up for days. So he’d lie there. On the floor. For hours. While you suffered under fluorescents until they decided you were sick enough to be allowed a bed.",
+      "Except this time, they didn’t even give you a bed.",
+      "They stuck you in a gurney in the hallway — not because they were full, but because they knew you’d need to be admitted and wanted to pretend they hadn’t already decided.",
+      "You pissed yourself in that hallway. You vomited on yourself. You shat yourself. And they walked by like they were in an episode of The Andy Griffith Show. Smiling. Chatting. Sipping coffee. While you marinated in your own fluids in a hallway of indifference.",
+      "When they finally admitted you, the nightmare didn’t end. It just got institutionalized.",
+      "The ER doc — sweet, well-meaning, naïve — thought GI might help. But GI passed you off to Acute Pain. Acute Pain passed you back. A week and a half of nothing.",
+      "You were 20 pounds underweight. Potassium so low it could’ve stopped your heart. They were terrified to feed you because of refeeding syndrome but didn’t know how to handle it, so they just... didn’t.",
+      "And the doctors? They never rounded. Not unless the charge nurse demanded it, or your partner came in and made them feel watched. Otherwise, you were invisible.",
+      "And Deepa. Again. And again. She was like a passive-aggressive ghost haunting your chart. Cold. Efficient. Dismissive. One quarter of a Tramadol — and a follow-up note to ensure you’d never get it again.",
+      "You weren't even allowed to stand up. Someone had fallen the week before, so now everyone was on bed alarms — including you, with full mobility. You so much as shifted toward the floor and the alarm shrieked like you’d flatlined.",
+      "Meanwhile, they were giving you two gallons of bowel prep per day. Let’s say that again. Two. Gallons. Of GoLYTELY. While you weren’t allowed out of bed. You sat in your own shit and piss for ten days.",
+      "You rang the call bell. No one came. The good nurse left. Her replacement ghosted you.",
+      "Gabapentin made you blind. Clonidine tanked your heart rate to 30 bpm. Lidocaine was run through an IV you told them was bad — it leaked into your elbow and fried your arm for a week.",
+      "You crocheted. You made TikToks under the covers. You laughed because if you didn’t, you’d die.",
+      "And then came the transport tech. You were drenched in sweat. He threw a blanket at you and said: “There are kids here. No one wants to see your vagina.”",
+      "You launched yourself off the gurney, back into bed, yelling, “Keep him away from me!” That was it. That’s all it took. The label went in: Combative.",
+      "No context. No explanation. Just one more reason to ignore you.",
+      "That night, no meds. No rounding. No answers.",
+      "So you signed out AMA. While the nurse fetched the paperwork, you swept everything valuable into the trash — under a mess of soaked chucks pads and emesis bags. Not because it mattered. But because someone had to know you were there."
+    ],
+    "choices": [
+      {
+        "text": "📝 Document this nightmare for TikTok.",
+        "nextId": "tiktok_moment_pingpong"
+      },
+      {
+        "text": "🚪 Sign out AMA. Again.",
+        "nextId": "sign_out_ama"
+      },
+      {
+        "text": "🧎 Beg the charge nurse for help. Again.",
+        "nextId": "beg_charge_nurse"
+      },
+      {
+        "text": "🔁 Stay and hope something changes.",
+        "nextId": "glimmer_of_hope"
+      }
+    ]
+  }
+  
