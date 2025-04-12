@@ -1,72 +1,54 @@
 {
-  "id": "start",
-  "text": [
-    "\ud83e\udde8 Scene: Welcome to the ER \u2014 Please Take a Number",
-    "It didn\u2019t start with an ambulance. It started with a year of gaslighting.",
-    "You were a good patient. You went to every appointment, even when you had to leave work early, bike two hours with your stomach in knots, or beg friends for rides. You tolerated it all \u2014 the rotating cast of medical residents who never read your chart, the endless loop of 'eat more fiber,' 'take Miralax,' 'do yoga,' and the cherry on top: 'Are you here for drugs?'",
-    "You told them, every time: 'This is NOT a case of IBS. I'm an ultramarathon runner. I eat like a vegan wellness influencer. I've taken everything you've prescribed\u2014multiple times\u2014as written. And I'm still in agony.'",
-    "They nodded sympathetically and prescribed a different flavor of useless.",
-    "You worked at a 3D printing company, finally with decent insurance. Stanford Hospital was twenty minutes away. The GI clinic was walking distance from your job. You thought that meant something.",
-    "It didn\u2019t.",
-    "Stanford gave you the same shrugs and suspicion that Medi-Cal did \u2014 just with nicer furniture.",
-    "After months of vomiting, bloating so severe none of your clothes fit, and appointments that went nowhere, you stopped hoping. You started surviving. You stayed late in the lab to make up for time lost to vomiting in your car or sprinting to the bathroom mid-client meeting. You popped antiemetics like mints \u2014 which you'd been on since middle school, by the way, because this didn't start last year. This started decades ago. No one ever took it seriously.",
-    "Rather than sympathy and help, fighting the urge not to throw up in the middle of meetings (and often failing) earned you the label of 'unreliable employee'. It's not long before your boss puts you on an extensive PIP for <gasp!> fighting a serious and life-threatening chronic illness.",
-    "Then came the night everything broke.",
-    "You wake up feeling like a team of ninjas has been stabbing you in the belly all night. The pain is relentless \u2014 twisting, bloating, pulsing \u2014 and you can't tell if it's your intestines or a demon.",
-    "But the pain \u2014 the pressure \u2014 it felt like you'd swallowed a basketball.",
-    "You couldn't stand. Couldn't walk. Couldn't breathe without crying.",
-    "The pain in your stomach becomes unbearable. You can't walk. You're doubled over, gasping, sweat pouring down your face. You plead with your partner to call 911.",
-    "The paramedics arrived. Professionals, supposedly.",
-    "Your partner has to spend twenty minutes convincing them that you're not nine months pregnant and in labor. The bloating is so extreme you look like you've swallowed a basketball. Your skin is stretched tight \u2014 so tight you're surprised you don't burst into stretch marks."
-  ],
-  "choices": [
-    {
-      "text": "\ud83d\ude91 Continue to the ER in the ambulance",
-      "nextId": "er_arrival_expanded"
-    },
-    {
-      "text": "\ud83d\udcf1 Document what\u2019s happening on social media",
-      "nextId": "tiktok_waiting_exposed"
-    },
-    {
-      "text": "\ud83e\uddd3 Talk to Gladys, who\u2019s been waiting even longer",
-      "nextId": "meet_gladys"
-    },
-    {
-      "text": "\ud83d\udce2 Try to advocate for yourself early",
-      "nextId": "early_confrontation"
-    },
-    {
-      "text": "\ud83d\udeaa Refuse the ambulance and go home",
-      "nextId": "ambulance_refusal"
-    }
-  ],
-  "resources": [
-    {
-      "title": "Understanding Medical Gaslighting",
-      "url": "https://www.healthline.com/health/medical-gaslighting"
-    },
-    {
-      "title": "How to Advocate for Yourself in the ER",
-      "url": "https://www.verywellhealth.com/patient-advocacy-in-emergency-rooms-4125397"
-    },
-    {
-      "title": "Support Groups and Communities",
-      "items": [
-        "Facebook: Ehlers-Danlos Support",
-        "TikTok: #MedicalGaslighting, #POTS, #GastroparesisWarrior",
-        "YouTube: Patient Stories & Advocacy Channels"
-      ]
-    }
-  ],
-  "navigation": [
-    {
-      "text": "\ud83d\udd01 Start this story over from the beginning",
-      "nextId": "start"
-    },
-    {
-      "text": "\ud83c\udfe0 Return to Main Menu",
-      "nextId": "main_menu"
-    }
-  ]
+  "start": {
+    "id": "start",
+    "text": [
+      "\ud83e\udde8 Scene: Welcome to the ER \u2014 Please Take a Number",
+      "It didn't start with an ambulance. It started with a year of gaslighting.",
+      "You were a good patient. You went to every appointment, even when you had to leave work early, bike two hours with your stomach in knots, or beg friends for rides. You tolerated it all \u2014 the rotating cast of medical residents who never read your chart, the endless loop of 'eat more fiber,' 'take Miralax,' 'do yoga,' and the cherry on top: 'Are you here for drugs?'",
+      "You told them, every time: 'This is NOT a case of IBS. I'm an ultramarathon runner. I eat like a vegan wellness influencer. I've taken everything you've prescribed\u2014multiple times\u2014as written. And I'm still in agony.'",
+      "They nodded sympathetically and prescribed a different flavor of useless.",
+      "You worked at a 3D printing company, finally with decent insurance. Stanford Hospital was twenty minutes away. The GI clinic was walking distance from your job. You thought that meant something.",
+      "It didn\u2019t.",
+      "Stanford gave you the same shrugs and suspicion that Medi-Cal did \u2014 just with nicer furniture.",
+      "After months of vomiting, bloating so severe none of your clothes fit, and appointments that went nowhere, you stopped hoping. You started surviving. You stayed late in the lab to make up for time lost to vomiting in your car or sprinting to the bathroom mid-client meeting. You popped antiemetics like mints \u2014 which you'd been on since middle school, by the way, because this didn't start last year. This started decades ago. No one ever took it seriously.",
+      "Rather than sympathy and help, fighting the urge not to throw up in the middle of meetings (and often failing) earned you the label of 'unreliable employee'. It's not long before your b*tch of a boss puts you on an extensive PIP for <gasp!> fighting a serious and life-threatening chronic illness.",
+      "Then came the night everything broke.",
+      "You wake up feeling like a team of ninjas has been stabbing you in the belly all night. The pain is relentless \u2014 twisting, bloating, pulsing \u2014 and you can't tell if it's your intestines or a demon.",
+      "But the pain \u2014 the pressure \u2014 it felt like you'd swallowed a basketball.",
+      "You couldn't stand. Couldn't walk. Couldn't breathe without crying.",
+      "The pain in your stomach becomes unbearable. You can't walk. You're doubled over, gasping, sweat pouring down your face. You plead with your partner to call 911.",
+      "The paramedics arrived. Professionals, supposedly.",
+      "Your partner has to spend twenty minutes convincing them that you're not nine months pregnant and in labor. The bloating is so extreme you look like you've swallowed a basketball. Your skin is stretched tight \u2014 so tight you're surprised you don't burst into stretch marks."
+    ],
+    "choices": [
+      {
+        "text": "\ud83d\udce2 Speak up about your treatment",
+        "nextId": "confrontation"
+      },
+      {
+        "text": "\ud83d\ude36 Stay silent and wait it out",
+        "nextId": "waiting_game"
+      },
+      {
+        "text": "\ud83d\ude91 Continue to the ER in the ambulance",
+        "nextId": "er_arrival_expanded"
+      },
+      {
+        "text": "\ud83d\udeaa Escape the ambulance and go back home",
+        "nextId": "escape_ambulance"
+      }
+    ],
+    "resources": [],
+    "navigation": [
+      {
+        "text": "\ud83d\udd01 Start this story over from the beginning",
+        "nextId": "start"
+      },
+      {
+        "text": "\ud83c\udfe0 Return to Main Menu (More stories coming soon!)",
+        "nextId": "start",
+        "comingSoon": true
+      }
+    ]
+  }
 }

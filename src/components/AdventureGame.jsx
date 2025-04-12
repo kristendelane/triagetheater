@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
 import { useState, useEffect } from 'react';
-import storyData from '../Story-Data/welcome_to_er_scene.json';
+import storyData from '../Story-Data/scenes/welcome_to_er_scene.json';
 
 export default function AdventureGame() {
   const [currentSceneId, setCurrentSceneId] = useState('start');
@@ -10,21 +10,20 @@ export default function AdventureGame() {
 
   useEffect(() => {
     setIsClient(true);
-    
     // Check if there's a quest ID in the URL
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('quest');
-    
+
     if (id) {
       setQuestId(id);
       // You could fetch quest data here if needed
       fetch(`/api/quest?id=${id}`)
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           console.log('Quest data:', data);
           // Handle quest data as needed
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('Error fetching quest:', error);
         });
     }
@@ -56,11 +55,13 @@ export default function AdventureGame() {
   const renderText = (textData) => {
     if (Array.isArray(textData)) {
       return textData.map((paragraph, index) => (
-        <p key={index} className="mb-4">{paragraph}</p>
+        <p key={index} className="mb-4">
+          {paragraph}
+        </p>
       ));
     }
     return <p className="mb-4">{textData}</p>;
-  }
+  };
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md mt-10 border border-gray-200">
@@ -104,7 +105,12 @@ export default function AdventureGame() {
             {currentScene.resources.map((resource, index) => (
               <div key={index} className="bg-gray-50 p-4 rounded-lg">
                 {resource.url ? (
-                  <a href={resource.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 font-medium">
+                  <a
+                    href={resource.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 font-medium"
+                  >
                     {resource.title}
                   </a>
                 ) : (
@@ -142,9 +148,11 @@ export default function AdventureGame() {
 
       {currentScene.isEnding && (
         <div className="mt-8 text-center text-gray-500 italic">
-          You made it home, but the ordeal isn't truly over. The fight continues.<br/>(Refresh page to start again)
+          You made it home, but the ordeal isn&apos;t truly over. The fight continues.
+          <br />
+          (Refresh page to start again)
         </div>
       )}
     </div>
   );
-} 
+}

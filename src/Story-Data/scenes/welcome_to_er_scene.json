@@ -3,42 +3,53 @@
     "id": "start",
     "text": [
       "\ud83e\udde8 Scene: Welcome to the ER \u2014 Please Take a Number",
-      "It didn't start with an ambulance. It started with a year of gaslighting.",
-      "You were a good patient. You went to every appointment, even when you had to leave work early, bike two hours with your stomach in knots, or beg friends for rides. You tolerated it all \u2014 the rotating cast of medical residents who never read your chart, the endless loop of 'eat more fiber,' 'take Miralax,' 'do yoga,' and the cherry on top: 'Are you here for drugs?'",
-      "You told them, every time: 'This is NOT a case of IBS. I'm an ultramarathon runner. I eat like a vegan wellness influencer. I've taken everything you've prescribed\u2014multiple times\u2014as written. And I'm still in agony.'",
-      "They nodded sympathetically and prescribed a different flavor of useless.",
-      "You worked at a 3D printing company, finally with decent insurance. Stanford Hospital was twenty minutes away. The GI clinic was walking distance from your job. You thought that meant something.",
-      "It didn\u2019t.",
-      "Stanford gave you the same shrugs and suspicion that Medi-Cal did \u2014 just with nicer furniture.",
-      "After months of vomiting, bloating so severe none of your clothes fit, and appointments that went nowhere, you stopped hoping. You started surviving. You stayed late in the lab to make up for time lost to vomiting in your car or sprinting to the bathroom mid-client meeting. You popped antiemetics like mints \u2014 which you'd been on since middle school, by the way, because this didn't start last year. This started decades ago. No one ever took it seriously.",
-      "Rather than sympathy and help, fighting the urge not to throw up in the middle of meetings (and often failing) earned you the label of 'unreliable employee'. It's not long before your b*tch of a boss puts you on an extensive PIP for <gasp!> fighting a serious and life-threatening chronic illness.",
-      "Then came the night everything broke.",
-      "You wake up feeling like a team of ninjas has been stabbing you in the belly all night. The pain is relentless \u2014 twisting, bloating, pulsing \u2014 and you can't tell if it's your intestines or a demon.",
-      "But the pain \u2014 the pressure \u2014 it felt like you'd swallowed a basketball.",
-      "You couldn't stand. Couldn't walk. Couldn't breathe without crying.",
-      "The pain in your stomach becomes unbearable. You can't walk. You're doubled over, gasping, sweat pouring down your face. You plead with your partner to call 911.",
-      "The paramedics arrived. Professionals, supposedly.",
-      "Your partner has to spend twenty minutes convincing them that you're not nine months pregnant and in labor. The bloating is so extreme you look like you've swallowed a basketball. Your skin is stretched tight \u2014 so tight you're surprised you don't burst into stretch marks."
+      "It didn't start with an ambulance. It started with pain. Not just any pain \u2014 *character development pain*. The kind that wakes you up at 3am, folds you in half like a crusty yoga mat, and whispers, *\u201cGood luck, bitch.\u201d*",
+      "You were a \u201cgood patient,\u201d remember? You played the game. You did the fiber. The yoga. The low FODMAP sad beige diet. You smiled through the lectures, the pamphlets, the \u201chave you tried breathing?\u201d energy. You even kept your voice calm while the 12-year-old resident explained your own body to you like he was giving a TED Talk called \u201cIt\u2019s Just IBS, Sweetheart.\u201d",
+      "You\u2019re not a doctor, but you **are** a PhD in physics with decades of lived experience in *\u201csomething is very wrong with my stomach and no one believes me.\u201d* You\u2019ve worked in high-tech labs, helped bring 3D-printed products to life, and now? You\u2019re curled in the fetal position, vibrating like a dying Roomba, covered in flop sweat and regret.",
+      "You haven\u2019t eaten in three days. A bite of yogurt sent you into a full-body exorcism. Even water is playing hard to get.",
+      "Your partner tiptoes in, haunted. \u201cDo you think it\u2019s time to go to the ER?\u201d",
+      "You nod. The Go Bag is already packed."
     ],
     "choices": [
       {
-        "text": "\ud83d\udce2 Speak up about your treatment",
-        "nextId": "confrontation"
-      },
-      {
-        "text": "\ud83d\ude36 Stay silent and wait it out",
-        "nextId": "waiting_game"
-      },
-      {
-        "text": "\ud83d\ude91 Continue to the ER in the ambulance",
+        "text": "\ud83d\ude91 Let the Sadist Squad roll you into the ER",
         "nextId": "er_arrival_expanded"
       },
       {
-        "text": "\ud83d\udeaa Escape the ambulance and go back home",
-        "nextId": "escape_ambulance"
+        "text": "\ud83d\udcf1 Start a TikTok while literally dying",
+        "nextId": "tiktok_waiting_exposed"
+      },
+      {
+        "text": "\ud83e\uddd3 Talk to Gladys, who\u2019s been waiting even longer",
+        "nextId": "meet_gladys"
+      },
+      {
+        "text": "\ud83d\udce2 Advocate politely for yourself",
+        "nextId": "early_confrontation"
+      },
+      {
+        "text": "\ud83d\udeaa Refuse the ambulance and hobble home medieval-style",
+        "nextId": "ambulance_refusal"
       }
     ],
-    "resources": [],
+    "resources": [
+      {
+        "title": "Understanding Medical Gaslighting",
+        "url": "https://www.healthline.com/health/medical-gaslighting"
+      },
+      {
+        "title": "Chronic Illness and Medical Trauma",
+        "url": "https://www.psychologytoday.com/us/blog/the-truth-about-exercise-addiction/201808/chronic-illness-and-medical-trauma"
+      },
+      {
+        "title": "Patient Advocacy Resources",
+        "items": [
+          "How to Document Your Symptoms Effectively",
+          "Questions to Ask Your Healthcare Provider",
+          "Understanding Your Rights as a Patient"
+        ]
+      }
+    ],
     "navigation": [
       {
         "text": "\ud83d\udd01 Start this story over from the beginning",
